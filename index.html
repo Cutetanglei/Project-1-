@@ -70,9 +70,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 										<div class="facts">
 											<div class="register">
-												<form action="#" method="post">
-													<input name="Email" placeholder="Email Address" type="text" required="">
-													<input name="Password" placeholder="Password" type="password" required="">
+												<form id="cusLoginFrom">
+													<input name="Email" id="login_email" placeholder="Email Address" type="text" required="">
+													<input name="Password" id="login_pwd" placeholder="Password" type="password" required="">
 													<div class="sign-up">
 														<input type="submit" value="Sign in"/>
 													</div>
@@ -83,11 +83,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 										<div class="facts">
 											<div class="register">
-												<form action="#" method="post">
-													<input placeholder="Name" name="Name" type="text" required="">
-													<input placeholder="Email Address" name="Email" type="email" required="">
-													<input placeholder="Password" name="Password" type="password" required="">
-													<input placeholder="Confirm Password" name="Password" type="password" required="">
+												<form id="cusRegisterFrom">
+													<input placeholder="Name" id="reg_nickName" name="Name" type="text" required="">
+													<input placeholder="Email Address" id="reg_email" name="Email" type="email" required="">
+													<input placeholder="Password" id="reg_pwd" name="Password" type="password" required="">
+													<input placeholder="Confirm Password" id="reg_c_pwd" name="Password" type="password" required="">
 													<div class="sign-up">
 														<input type="submit" value="Create Account"/>
 													</div>
@@ -1094,7 +1094,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         		}
         	}
         });
-    </script>
+	</script>
+
+	<script src="http://cdn1.lncld.net/static/js/3.6.0/av-min.js"></script>
+	<script src="js/logic/index.js"></script>
 	<!-- //cart-js -->
 </body>
 </html>
