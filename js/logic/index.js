@@ -31,6 +31,7 @@ $(function(){
             }).then(function(object) {
                 $('#myModal88').modal('hide');
                 sessionStorage.setItem("Customer_ID",object.id)
+                sessionStorage.setItem("Customer_Name",object.attributes.nickName)
             })
         });
     })
@@ -51,6 +52,7 @@ $(function(){
             if(res.length > 0){
                 $('#myModal88').modal('hide');
                 sessionStorage.setItem("Customer_ID",res[0].id)
+                sessionStorage.setItem("Customer_Name",res[0].attributes.nickName)
             }else{
                 alert("用户名或密码错误");
                 return
