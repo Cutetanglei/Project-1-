@@ -58,15 +58,19 @@ input[type="submit"],.panel-body ul li a,.checkout-right-basket a,.additional_in
 .w3l_login a {
     font-size: .8em;
     color: #3c43a4;
-    width: 50px;
+	/* width: 50px; */
+	min-width: 50px;
+	box-sizing: border-box;
+	padding: 0 10px;
+	line-height: 50px;
     height: 50px;
     display: block;
     text-align: center;
     border: 1px solid #3c43a4;
 	margin-top: 0.5em;
 }
-.w3l_login a span{
-	top:1.3em;
+.w3l_login a span::before{
+	margin: 0 5px;
 }
 a.act {
     color:#ff5063 !important;
