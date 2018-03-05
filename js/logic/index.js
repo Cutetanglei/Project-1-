@@ -2,6 +2,39 @@ AV.init({
     appId: "yNEf7jl2uUskO9HlnSiKjAWU-gzGzoHsz",
     appKey: "uYOq35PscfChdJ4Xv8EoqUQb"
 });
+
+function addToCart(id,dom){
+    var Cid = sessionStorage.getItem("Customer_ID")
+    if(!Cid){
+        alert("请先登陆！")
+        $('#myModal88').modal('show');
+        return
+    }
+    var customer = AV.Object.createWithoutData('Customer', Cid)
+    var sku = AV.Object.createWithoutData('Product_SKU', id)
+
+    var cart_query = new AV.Query("Shoping_Cart")
+    cart_query.equalTo("customer",customer)
+    cart_query.equalTo("sku",sku)
+    cart_query.first().then(function(res){
+        if(res){
+            res.set("quantity",res.get("quantity")+1)
+            res.save();
+        }else{
+            var cart = new AV.Object("Shoping_Cart")
+            cart.set("quantity",1);
+            cart.set("customer",customer)
+            cart.set("sku",sku)
+            cart.save();
+        }
+        $(dom).text("已添加到购物车")
+        setTimeout(function(){
+            $(dom).text("Add to cart")
+        },1000)
+    })
+    
+    
+}
 $(function(){
     
     function loadData(){
@@ -15,13 +48,15 @@ $(function(){
         phone_sku.include(['product'])
         phone_sku.matchesQuery("product",phone_pro)
         phone_sku.find().then(function(res){
-            console.log(res[0])
             var Mobile_Phones =  template("product",{data:res})
             $("#home").html(Mobile_Phones)
         })
     }
     
     loadData();
+
+
+    
     
 
     $("#cusRegisterFrom").on("submit",function(e){

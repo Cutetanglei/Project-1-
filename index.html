@@ -1141,7 +1141,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<h5><a href="single.html">
 					{{$value.get("product").get('title')}} {{$value.get('color')}} 
 					{{if $value.get('rom')}}
-						{{$value.get('rom')}}GB
+						<br/>{{$value.get('rom')}}GB
 					{{/if}}
 				</a></h5>
 				<div class="simpleCart_shelfItem">
@@ -1149,9 +1149,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<span>${{$value.get("originalPrice")}}</span> 
 						<i class="item_price">${{$value.get("discountPrice")}}</i>
 					</p>
-					<form action="#" method="post">
-						<button type="submit" class="w3ls-cart">Add to cart</button>
-					</form>
+					
+					<button onclick="addToCart('{{$value.id}}',this)" class="w3ls-cart">Add to cart</button>
+					
 				</div>
 			</div>
 		{{/each data}}
