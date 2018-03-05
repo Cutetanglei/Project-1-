@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车和结算页</title>
+	<link rel="stylesheet" href="css/reset1.css" type="text/css">
+	<link rel="stylesheet" href="css/style1.css" type="text/css">
+	<link rel="stylesheet" href="css/account1.css" type="text/css">
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<style type="text/css">
+	body,td,th {
+	font-family: "Open Sans", sans-serif;
+}
+    </style>
+</head>
+<body class="grey_bg">
+<div class="header"> 
+	<div class="container">
+			<div class="w3l_login">
+				<a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+			</div>
+			<div class="w3l_logo">
+				<h1><a href="index.html">&emsp;&emsp;&emsp;G 3 6<span> Your G36. Your telephone.</span></a></h1>
+			</div>
+		  <div class="search">
+				<input class="search_box" type="checkbox" id="search_box">
+				<label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
+				<div class="search_form">
+					<form action="#" method="post">
+						<input type="text" name="Search" placeholder="Search...">
+						<input type="submit" value="Send">
+					</form>
+				</div>
+			</div>
+			<div class="cart cart box_1">
+				<form action="#" method="post" class="last">
+					<input type="hidden" name="cmd" value="_cart" />
+					<input type="hidden" name="display" value="1" />
+					<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+				</form>
+			</div>
+		</div>
+
+  <!-- nav end -->
+	</div>
+<div class="navigation">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header nav_2">
+					<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+					<ul class="nav navbar-nav">
+						<li><a href="index.html" class="act">Home</a></li>
+						<!-- Mega Menu -->
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
+							<ul class="dropdown-menu multi-column columns-3">
+								<div class="row">
+									<div class="col-sm-3">
+										<ul class="multi-column-dropdown">
+											<h6>Mobiles</h6>
+											<li><a href="products.html">Mobile Phones</a></li>
+											<li><a href="products.html">Mp3 Players <span>New</span></a></li>
+											<li><a href="products.html">Popular Models</a></li>
+											<li><a href="products.html">All Tablets<span>New</span></a></li>
+										</ul>
+									</div>
+									<div class="col-sm-3">
+										<ul class="multi-column-dropdown">
+											<h6>Accessories</h6>
+											<li><a href="products1.html">Laptop</a></li>
+											<li><a href="products1.html">Desktop</a></li>
+											<li><a href="products1.html">Wearables <span>New</span></a></li>
+											<li><a href="products1.html"><i>Summer Store</i></a></li>
+										</ul>
+									</div>
+									<div class="col-sm-4">
+										<div class="w3ls_products_pos">
+											<h4>30%<i>Off/-</i></h4>
+											<img src="images/1.jpg" alt=" " class="img-responsive" />
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+						</li>
+						<li><a href="about.html">About Us</a></li>
+						<li><a href="mail.html">Mail Us</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+	<!-- header end -->
+
+	<div class="mainContent comWidth">
+		<div class="list-info-item">
+			<h4 class="title">收货信息</h4>
+			<div class="content">
+				<label>*<span>选择地区:</span><select name="address" id="select-address">
+					<option value="1">重庆市 九龙坡区</option>
+					<option value="1">重庆市 江北区</option>
+				</select></label>
+				<label class="detail-add">*<span>详细地址:</span><input placeholder="只能填入26个汉字" type="text" name="detail-add"></label>
+				<label class="consignee">*<span>收&nbsp;&nbsp;货&nbsp;&nbsp;人:</span><input placeholder="只能填入10个汉字" type="text" name="consignee"></label>
+				<label class="phone-num">*<span>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机:</span><input placeholder="如13212325263" type="text" name="phone-num">
+					<span>或固定电话:</span><input placeholder="区号" type="text" ><em>-</em>
+					<input placeholder="电话号码" type="text" ><em>-</em>
+					<input placeholder="分机号(可选)" type="text" >
+				</label>
+				<button class="btn-confirm">确认收货地址</button>
+			</div>
+		</div>
+		<div class="list-info-item">
+			<h4 class="title">支付方式</h4>
+			<div class="content pay">
+				<form action="#">
+					<label >
+						<input type="radio" name="pay"><em>微信支付</em><img src="images/icon/wx.jpg" alt="微信图标">用微信扫一扫就能支付!
+					</label>
+					<label >
+						<input type="radio" name="pay"><em>货到支付</em>送货上门后再付款,现金或者刷卡,千万别点要收手续费!
+					</label>
+				</form>
+
+			</div>
+		</div>
+	  <div class="list-info-item">
+			<h4 class="title">发票信息</h4>
+			<div class="content bill">
+
+				<form action="#">
+					<label ><input type="checkbox" checked>需要发票</label>
+					<label><em>*</em><span>发票类型:</span><select name="bill" id="select-bill-type">
+						<option value="1">商业零售发票</option>
+						<option value="2">增值税发票</option>
+					</select></label>
+					<label><em>*</em><span>发票抬头:</span><select name="bill" id="select-bill-title">
+						<option value="1">个人</option>
+						<option value="2">单位</option>
+					</select>
+					<input type="text" placeholder="郎爷爷">
+				</label>
+				<input type="button" value="保存" name="save"><input type="button" value="取消" name="cancel">
+			</form>
+
+		</div>
+		</div>
+<div class="list-info-item cl">
+    <h4 class="title">订单结算</h4>
+		<div class="content confirm-submit">
+			<div class="subinfo fr">
+			<div class="total">总计<span>￥1996.00</span></div>
+				<input type="button" value="提交订单">
+			</div>
+		</div>
+
+	  </div>
+</div><!-- mainContent end -->
+<div class="newsletter">
+		<div class="container">
+			<div class="col-md-6 w3agile_newsletter_left">
+				<h3>Newsletter</h3>
+				<p>You are welcome to email us.</p>
+			</div>
+			<div class="col-md-6 w3agile_newsletter_right">
+				<form action="#" method="post">
+					<input type="email" name="Email" placeholder="Email" required="">
+					<input type="submit" value="" />
+				</form>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<div class="footer">
+		<div class="container">
+			<div class="w3_footer_grids">
+			  <div class="col-md-3 w3_footer_grid">
+					<h3>Contact</h3>
+					<ul class="address">
+					  <li><em class="glyphicon glyphicon-map-marker" aria-hidden="true"></em>The Chinese University of Hong Kong, Shatin, NT, Hong Kong</li>
+					  <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">1155@link.cuhk.edu.hk</a></li>
+					  <li><em class="glyphicon glyphicon-earphone" aria-hidden="true"></em>852 9583 0000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </li>
+					</ul>
+				</div>
+				<div class="col-md-3 w3_footer_grid">
+					<h3>Information</h3>
+					<ul class="info"> 
+						<li><a href="about.html">About Us</a></li>
+						<li><a href="mail.html">Contact Us</a></li>
+						<li><a href="codes.html">Short Codes</a></li>
+						<li><a href="faq.html">FAQ's</a></li>
+						<li><a href="products.html">Special Products</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 w3_footer_grid">
+					<h3>Category</h3>
+					<ul class="info"> 
+						<li><a href="products.html">Mobiles</a></li>
+						<li><a href="products1.html">Laptops</a></li>
+						<li><a href="products.html">Purifiers</a></li>
+						<li><a href="products1.html">Wearables</a></li>
+						<li><a href="products2.html">Kitchen</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 w3_footer_grid">
+					<h3>Profile</h3>
+					<ul class="info"> 
+						<li><a href="index.html">Home</a></li>
+						<li><a href="products.html">Today's Deals</a></li>
+					</ul>
+					<h4>Follow Us</h4>
+					<div class="agileits_social_button">
+						<ul>
+							<li><a href="#" class="facebook"> </a></li>
+							<li><a href="#" class="twitter"> </a></li>
+							<li><a href="#" class="google"> </a></li>
+							<li><a href="#" class="pinterest"> </a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<div class="footer-copy">
+			<div class="footer-copy1">
+				<div class="footer-copy-pos">
+					<a href="#home1" class="scroll"><img src="images/arrow.png" alt=" " class="img-responsive" /></a>
+				</div>
+			</div>
+			<div class="container">
+				<p>&copy;2018 G36. All rights reserved | Design by G36 Company</a></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
