@@ -38,19 +38,34 @@ function addToCart(id,dom){
 $(function(){
     
     function loadData(){
-
+        // 加载手机数据
         var phone_pro = new AV.Query('Product')
         phone_pro.equalTo("categoryName","Mobile Phones")
 
         var phone_sku = new AV.Query('Product_SKU');
         phone_sku.limit(3)
-        // phone_sku.descending('createdAt');
+        phone_sku.descending('createdAt');
         phone_sku.include(['product'])
         phone_sku.matchesQuery("product",phone_pro)
         phone_sku.find().then(function(res){
-            var Mobile_Phones =  template("product",{data:res})
-            $("#home").html(Mobile_Phones)
+            $("#home > .agile_ecommerce_tabs").html(template("product",{data:res}))
         })
+
+
+        // 加载配件信息
+        var accessories_pro = new AV.Query('Product')
+        accessories_pro.equalTo("categoryName","Accessories")
+
+        var accessories_sku = new AV.Query('Product_SKU');
+        accessories_sku.limit(3)
+        accessories_sku.descending('createdAt');
+        accessories_sku.include(['product'])
+        accessories_sku.matchesQuery("product",accessories_pro)
+        accessories_sku.find().then(function(res){
+            $("#audio > .agile_ecommerce_tabs").html(template("product",{data:res}))
+        })
+
+
     }
     
     loadData();
