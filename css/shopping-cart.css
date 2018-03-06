@@ -69,7 +69,17 @@ input[name='cart_item_checkbox']{
 }
 .cart_item_table .cart_item_quantity .cart_item_quantity_input{
     width: 3em;
+    text-align: center;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type="number"]{
+    -moz-appearance: textfield;
+}
+
 .cart_item_table .cart_item_subtotal{
     font-weight: bold;
     color: #ff3328;
