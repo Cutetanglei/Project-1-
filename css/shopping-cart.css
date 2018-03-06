@@ -85,6 +85,10 @@ input[type="number"]{
     color: #ff3328;
 }
 
+.cart_item_table tr.act{
+    background: #ff33281a;
+}
+
 .block{
     display: block;
 }

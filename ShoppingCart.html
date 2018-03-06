@@ -179,7 +179,7 @@
 	</div>
 	<!-- //navigation -->
 	<div class="content_show_wrapper">
-		<div class="cart_notification cart_error" style="">
+		<div class="cart_notification cart_error">
 		</div>
 		<div id="group_show">
 			<h1>Shopping Cart</h1>
@@ -197,7 +197,7 @@
 							<th class="cart_option">Option</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="cart_item_body">
 						<tr>
 							<td>
 								<input name="cart_item_checkbox" type="checkbox">
@@ -216,9 +216,9 @@
 							</td>
 							<td>
 								<span class="cart_item_quantity">
-									<span class="icon">-</span>
-									<input min="1" max="99" class="cart_item_quantity_input" type="number">
-									<span class="icon">+</span>
+									<span class="icon" onclick="reduceQuantity(this)">-</span>
+									<input min="1" max="99" onchange="quantityChanged()" class="cart_item_quantity_input" value="0" type="number">
+									<span class="icon" onclick="addQuantity(this)">+</span>
 								</span>
 							</td>
 							<td class="cart_item_subtotal">
@@ -228,36 +228,6 @@
 									<a href="javascript:void(0)">Delete</a>
 							</td>
 						</tr>
-						<tr>
-								<td>
-									<input name="cart_item_checkbox" type="checkbox">
-									<div class="cart_item_preview">
-										<img src="https://store.storeimages.cdn-apple.com/8750/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone8/silver/iphone8-silver-select-2017_AV2?wid=284&hei=578&fmt=png-alpha&qlt=80&.v=1503702838899" alt="">
-									</div>
-									<div class="cart_item_overview">
-										<span class="title block">iPhone 5s</span>
-										<span class="block">Color： red</span>
-										<span class="block">ROM：   4GB</span>
-									</div>
-								</td>
-								<td>
-									<span class="block">$99.0</span>
-									<span class="block del-line">$100.0</span>
-								</td>
-								<td>
-									<span class="cart_item_quantity">
-										<span class="icon">-</span>
-										<input min="1" max="99" class="cart_item_quantity_input" type="number">
-										<span class="icon">+</span>
-									</span>
-								</td>
-								<td class="cart_item_subtotal">
-										<span class="block">$99.0</span>
-								</td>
-								<td>
-										<a href="javascript:void(0)">Delete</a>
-								</td>
-							</tr>
 					</tbody>
 				</table>
 				<!-- ====================================================================  -->
@@ -266,19 +236,16 @@
 				<div class="right_handler"> In total
 					<span class="total_amount"> 1 </span> &nbsp;items &nbsp;&nbsp; Total
 					<span class="total_price">&nbsp;$5200</span>
-					<a id="go_to_order" class="btn" href="lookOrder.html" style="font-size: 14px；position:relative;bottom:4px;">Proceed &nbsp;&nbsp;To
+					<a id="go_to_order" class="btn" href="lookOrder.html">Proceed &nbsp;&nbsp;To
 						<br>CheckOut</a>
 				</div>
 				<label for="js_all_selector" class="cart_all_selector_wrapper">
-					<input id="js_all_selector" class="js_all_selector all_selector" type="checkbox"> Choose All </label>
+					<input id="js_all_selector" class="js_all_selector all_selector" checked="checked" onclick="chooseAll(this)" type="checkbox"> Choose All </label>
 				<a class="go_back_shopping" href="http://sh.jumei.com/i/deal/d150603p892053zc.html">Continue to Shop</a>
 				<span class="seperate_line">|</span>
 				<a class="clear_cart_all" href="">Clear Selected items</a>
 				<form id="form_to_order" action="" method="post" style="display: none;">
 					<input name="items_key" type="hidden"> </form>
-			</div>
-			<div class="content_footer clear">
-
 			</div>
 			<div id="cart_side_nav">
 				<a href="javascript:void(0)"></a>
@@ -394,6 +361,54 @@
 			</div>
 		</div>
 		<!-- //footer -->
+		<script src="http://cdn1.lncld.net/static/js/3.6.0/av-min.js"></script>
+		<script src="js/logic/shopping-cart.js"></script>
+		<script src="js/template-web.js"></script>
+		<script id="cart_item_temp" type="text/html">
+			{{each datas}}
+			<tr cartItemId="{{$value.cart.id}}" 
+				discountPrice="{{$value.sku.get('discountPrice')}}" 
+				originalPrice="{{$value.sku.get('originalPrice')}}" 
+				quantity="{{$value.cart.get('quantity')}}"
+				subtotal="{{$value.sku.get('discountPrice') * $value.cart.get('quantity')}}"
+				class="act"
+				>
+				<td>
+					<input name="cart_item_checkbox" onchange="checkedItem(this)" checked='checked' type="checkbox">
+					<div class="cart_item_preview">
+						<img src="{{$value.pro.get('images')[0]}}" alt="">
+					</div>
+					<div class="cart_item_overview">
+						<span class="title block">{{$value.pro.get('title')}}</span>
+						<span class="block">Color：  {{$value.sku.get('color')}}</span>
+						{{if $value.sku.get('rom')}}
+							<span class="block">ROM：   {{$value.sku.get('rom')}}GB</span>
+						{{/if}}
+					</div>
+				</td>
+				<td>
+					<span class="block">${{$value.sku.get('discountPrice')}}</span>
+					{{if $value.sku.get('discountPrice') < $value.sku.get('originalPrice')}}
+					<span class="block del-line">${{$value.sku.get('originalPrice')}}</span>
+					{{/if}}
+				</td>
+				<td>
+					<span class="cart_item_quantity">
+						<span class="icon" onclick="reduceQuantity(this)">-</span>
+						<input min="1" max="99" onchange="quantityChanged(this,'{{$value.cart.id}}')" class="cart_item_quantity_input" value="{{$value.cart.get('quantity')}}" type="number">
+						<span class="icon" onclick="addQuantity(this)">+</span>
+					</span>
+				</td>
+				<td class="cart_item_subtotal">
+					<span name="subtotal" class="block">${{$value.sku.get('discountPrice') * $value.cart.get('quantity')}}</span>
+					
+				</td>
+				<td>
+					<a href="javascript:void(0)" onclick="deleteCartItem(this,'{{$value.cart.id}}','{{$value.pro.get('title')+$value.sku.get('color')}}')">Delete</a>
+				</td>
+			</tr>
+			{{/each data}}
+		</script>
 </body>
 
 </html>
