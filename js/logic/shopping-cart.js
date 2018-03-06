@@ -36,8 +36,12 @@ function addQuantity(dom) {
 function checkedItem(dom){
     if($(dom).attr('checked')){
         $(dom).closest("tr").addClass("act")
+        if($("[name='cart_item_checkbox']").length == $("[name='cart_item_checkbox']:checked").length){
+            $("#js_all_selector").attr("checked",true);
+        }
     }else{
         $(dom).closest("tr").removeClass("act")
+        $("#js_all_selector").attr("checked",false);
     }
     
 }
