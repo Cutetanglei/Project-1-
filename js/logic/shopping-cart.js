@@ -25,28 +25,83 @@ function logout() {
     window.location.href = "index.html"
 }
 
+function clearSelected(){
+    var selected = $("#cart_item_table tr.act")
+    for (var i = 0; i < selected.length; i++) {
+        var cart_id =  $(selected[i]).attr("cartItemId")
+        var cart_item = AV.Object.createWithoutData('Shoping_Cart', cart_id)
+        cart_item.destroy().then(function(item){
+            $("tr[cartItemId="+item.id+"]").remove();
+        })
+    }
+}
+
+
+function checkOut(){
+    $("#go_to_order").text("提交中....")
+    var Cid = sessionStorage.getItem("Customer_ID")
+    var customer = AV.Object.createWithoutData('Customer', Cid)
+
+    var order = new AV.Object("Order")
+    order.set("customer",customer)
+    order.save().then(function(o){
+        var selected = $("#cart_item_table tr.act")
+        for (var i = 0; i < selected.length; i++) {
+            var cart_id =  $(selected[i]).attr("cartItemId")
+            var cart_item = AV.Object.createWithoutData('Shoping_Cart', cart_id)
+            cart_item.fetch({ include: ['sku','customer'] }).then(function (item) {
+                var order_item = new AV.Object("Order_Item")
+                order_item.set("sku",item.get("sku"))
+                order_item.set("quantity",item.get("quantity"))
+                order_item.set("order",o)
+                order_item.save();
+                cart_item.destroy();
+            });
+        }
+        setTimeout(function(){
+            window.location.href = "lookOrder.html?orderId="+o.id
+        },1500)
+    });
+}
+
+
+
+function combined() {
+    var selected = $("#cart_item_table tr.act")
+    var total_price = 0;
+    var total_amount = 0;
+    for (var i = 0; i < selected.length; i++) {
+        var item =  $(selected[i])
+        total_price += parseFloat(item.attr("discountPrice")) * parseInt(item.attr("quantity"))
+        total_amount += parseInt(item.attr("quantity"))
+    }
+    $("#total_amount").text(total_amount)
+    $("#total_price").text("$" + total_price);
+    
+}
+
+
+function checkedItem(dom) {
+    if ($(dom).attr('checked')) {
+        $(dom).closest("tr").addClass("act")
+        if ($("[name='cart_item_checkbox']").length == $("[name='cart_item_checkbox']:checked").length) {
+            $("#js_all_selector").attr("checked", true);
+        }
+    } else {
+        $(dom).closest("tr").removeClass("act")
+        $("#js_all_selector").attr("checked", false);
+    }
+    combined();
+
+}
+function chooseAll(dom) {
+    $("[name='cart_item_checkbox']").attr('checked', !!$(dom).attr("checked")).change();
+}
 
 function addQuantity(dom) {
     var input = $(dom).prev()
     input.val(parseInt(input.val()) + 1)
     input.change()
-}
-
-
-function checkedItem(dom){
-    if($(dom).attr('checked')){
-        $(dom).closest("tr").addClass("act")
-        if($("[name='cart_item_checkbox']").length == $("[name='cart_item_checkbox']:checked").length){
-            $("#js_all_selector").attr("checked",true);
-        }
-    }else{
-        $(dom).closest("tr").removeClass("act")
-        $("#js_all_selector").attr("checked",false);
-    }
-    
-}
-function chooseAll(dom){
-    $("[name='cart_item_checkbox']").attr('checked',!!$(dom).attr("checked")).change();
 }
 
 function reduceQuantity(dom) {
@@ -72,6 +127,7 @@ function quantityChanged(dom, cartItemId) {
     var subtotal = tr.find("[name='subtotal']")
     subtotal.text("$" + (discountPrice * quantity))
     tr.attr("subtotal", discountPrice * quantity)
+    combined();
 }
 
 function deleteCartItem(dom, cartItemId, title) {
@@ -80,6 +136,7 @@ function deleteCartItem(dom, cartItemId, title) {
         cartItem.destroy();
         $(dom).closest("tr").remove();
     }
+    combined();
 }
 
 
@@ -99,6 +156,7 @@ $(function () {
             })
         }
         $("#cart_item_body").html(template("cart_item_temp", { datas: data }))
+        combined();
     })
 
 

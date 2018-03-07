@@ -169,7 +169,7 @@
 			<h1>Shopping Cart</h1>
 			<div class="groups_wrapper">
 				<!-- ====================================================================  -->
-				<table class="cart_item_table">
+				<table id="cart_item_table" class="cart_item_table">
 					<thead>
 						<tr>
 							<th class="cart_overview">
@@ -218,19 +218,18 @@
 				<!-- ====================================================================  -->
 			</div>
 			<div class="common_handler">
-				<div class="right_handler"> In total
-					<span class="total_amount"> 1 </span> &nbsp;items &nbsp;&nbsp; Total
-					<span class="total_price">&nbsp;$5200</span>
-					<a id="go_to_order" class="btn" href="lookOrder.html">Proceed &nbsp;&nbsp;To
-						<br>CheckOut</a>
-				</div>
-				<label for="js_all_selector" class="cart_all_selector_wrapper">
-					<input id="js_all_selector" class="js_all_selector all_selector" checked="checked" onclick="chooseAll(this)" type="checkbox"> Choose All </label>
-				<a class="go_back_shopping" href="http://sh.jumei.com/i/deal/d150603p892053zc.html">Continue to Shop</a>
+				<input id="js_all_selector" checked="checked" onclick="chooseAll(this)" type="checkbox"> Choose All </label>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="index.html">Contiune to shop</a>
 				<span class="seperate_line">|</span>
-				<a class="clear_cart_all" href="">Clear Selected items</a>
-				<form id="form_to_order" action="" method="post" style="display: none;">
-					<input name="items_key" type="hidden"> </form>
+				<a class="clear_cart_all" href="javascript:void(0)" onclick="clearSelected()">Clear Selected items</a>
+				<div style="float:right">
+					<span id="total_amount" class="total_amount"> 0 </span> 
+					&nbsp;items &nbsp;&nbsp; Total &nbsp;
+					<span id="total_price" class="total_price">$0</span>
+					<a id="go_to_order" class="btn" onclick="checkOut()" href="javascript:void(0)">CheckOut</a>
+					<!-- <a id="go_to_order" class="btn" onclick="checkOut()" href="javascript:void(0)" href="lookOrder.html">CheckOut</a> -->
+				</div>
 			</div>
 		</div>
 		<!-- newsletter -->
