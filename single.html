@@ -1,9 +1,3 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,8 +22,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="js/jquery.min.js"></script> 
 <!-- //js -->  
 <!-- web fonts --> 
-<link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<link href="//fonts.googleapis.com/css?family=Glegoo:400,700" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic" rel="stylesheet" type="text/css">
 <!-- //web fonts --> 
 <!-- for bootstrap working -->
 <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
@@ -151,7 +145,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<form action="#" method="post" class="last"> 
 					<input type="hidden" name="cmd" value="_cart" />
 					<input type="hidden" name="display" value="1" />
-					<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+					<button class="w3view-cart" onclick="window.location.href='ShoppingCart.html'"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
 				</form>   
 			</div>  
 		</div>
@@ -219,8 +213,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <ul class="dropdown-menu">
 			  <li><a href="icons.html">Web Icons</a></li>
 								<li><a href="codes.html">Short Codes</a></li>     
-							</ul>
-						</li>  
+							</ul> 
 						<li><a href="mail.html">Mail Us</a></li>
 					</ul>
 				</div>
@@ -298,18 +291,36 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						odit aut fugit, sed quia consequuntur magni dolores eos qui 
 						ratione voluptatem sequi nesciunt.</p>
 				</div>
-				<div class="color-quality">
 					<div class="color-quality-left">
-						<h5>Color : </h5>
-						<ul>
-							<li><a href="#"><span></span></a></li>
-							<li><a href="#" class="brown"><span></span></a></li>
-							<li><a href="#" class="purple"><span></span></a></li>
-							<li><a href="#" class="gray"><span></span></a></li>
-						</ul>
+						<h5 style="text-transform: capitalize">Color : </h5>
+					<div class="colr">
+						<div class="check">
+							<label class="checkbox" style="color:#C8490D;font:1px"><input type="radio" id="Colour1" name="checkbox"  value="Rose Gold" checked="checked"><i> </i>Rose Gold</label>
+						</div>
 					</div>
-					<div class="color-quality-right">
-						<h5>Quality :</h5>
+					<div class="colr">
+						<div class="check">
+							<label class="checkbox" style="color: #F3D607;font:1px"><input type="radio" id="Colour2" name="checkbox"  value="Gold" checked="checked"><i> </i>Gold</label>
+						</div>
+					</div>
+					<div class="colr">
+						<div class="check">
+							<label class="checkbox" style="color:#A7A3A3;font:1px"><input type="radio" id="Colour3" name="checkbox"  value="Silver" checked="checked"><i> </i>Silver</label>
+						</div>													
+					</div>
+										<div class="colr">
+						<div class="check">
+							<label class="checkbox" style="color:#080808;font:1px"><input type="radio" id="Colour4" name="checkbox"  value="Balck" checked="checked"><i> </i>Black</label>
+						</div>													
+					</div>
+										<div class="colr">
+						<div class="check">
+							<label class="checkbox" style="color:#3B3B3B;font:1px"><input type="radio" id="Colour5" name="checkbox"  value="Jet Black" checked="checked"><i> </i>Jet Black</label>
+						</div>													
+					</div>
+						
+					<div class="color-quality-right" style="position: relative;right:130px;"><br>
+						<h5 style="text-transform: capitalize">Quality :</h5>
 						 <div class="quantity"> 
 							<div class="quantity-select">                           
 								<div class="entry value-minus1">&nbsp;</div>
@@ -332,23 +343,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<!--quantity-->
 
 					</div>
-					<div class="clearfix"> </div>
+					<div class="clearfix" ><br> </div>
 				</div>
-				<div class="occasional">
-					<h5>RAM :</h5>
+				<p style="font:0.001px;display:none">try it</p>
+				<div class="occasional" >
+					<h5 style="text-transform:capitalize"><br><br><br><br><br><br><br><br><br><br>Ram :</h5>
 					<div class="colr ert">
 						<div class="check">
-							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>3 GB</label>
+							<label class="checkbox"><input type="radio" id="ROM1" name="checkbox" value="32G" checked="checked">
+						    <i> </i>32 GB</label>
 						</div>
 					</div>
 					<div class="colr">
 						<div class="check">
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>2 GB</label>
+							<label class="checkbox"><input type="radio" id="ROM2" name="checkbox"  value="64" checked="checked"><i> </i>64 GB</label>
 						</div>
 					</div>
 					<div class="colr">
 						<div class="check">
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>1 GB</label>
+							<label class="checkbox"><input type="radio" id="ROM3" name="checkbox"  value="128" checked="checked"><i> </i>128 GB</label>
+						</div>
+					</div>
+								<div class="colr">
+						<div class="check">
+							<label class="checkbox"><input type="radio" id="ROM4" name="checkbox"  value="256" checked="checked"><i> </i>256 GB</label>
 						</div>
 					</div>
 					<div class="clearfix"> </div>
@@ -765,7 +783,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="w3_footer_grids">
 				<div class="col-md-3 w3_footer_grid">
 					<h3>Contact</h3>
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
 					<ul class="address">
 					  <li><em class="glyphicon glyphicon-map-marker" aria-hidden="true"></em>The Chinese University of Hong Kong, Shatin, NT, Hong Kong</li>
 					  <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">1155@link.cuhk.edu.hk</a></li>
