@@ -54,7 +54,7 @@ $(function(){
 
         // 加载配件信息
         var accessories_pro = new AV.Query('Product')
-        accessories_pro.equalTo("categoryName","Accessories")
+        accessories_pro.equalTo("categoryName","Accessory")
 
         var accessories_sku = new AV.Query('Product_SKU');
         accessories_sku.limit(3)
