@@ -43,7 +43,7 @@ function addToCart(dom) {
             cart.set("sku", sku)
             cart.save();
         }
-        $(dom).text("Already added to the Shoping Cart")
+        $(dom).text("Added successfully")
         setTimeout(function () {
             $(dom).text("Add to cart")
         }, 1000)

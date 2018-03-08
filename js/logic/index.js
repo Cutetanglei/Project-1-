@@ -27,7 +27,7 @@ function addToCart(id,dom){
             cart.set("sku",sku)
             cart.save();
         }
-        $(dom).text("Already added to the shopping cart")
+        $(dom).text("Added successfully")
         setTimeout(function(){
             $(dom).text("Add to cart")
         },1000)

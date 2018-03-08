@@ -131,7 +131,7 @@ function quantityChanged(dom, cartItemId) {
 }
 
 function deleteCartItem(dom, cartItemId, title) {
-    if (confirm("Delete from the shopping cart" + title + "？")) {
+    if (confirm("Delete" + title + "from the shopping cart？")) {
         var cartItem = AV.Object.createWithoutData('Shoping_Cart', cartItemId)
         cartItem.destroy();
         $(dom).closest("tr").remove();
