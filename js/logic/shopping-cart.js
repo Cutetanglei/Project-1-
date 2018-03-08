@@ -13,7 +13,7 @@ function checkLogin() {
 
 function logined(name) {
     $(".w3l_login > a").prepend(name).attr("data-target", null).on("click", function () {
-        if (confirm("退出登陆？")) {
+        if (confirm("Login out？")) {
             logout();
         }
     })
@@ -38,7 +38,7 @@ function clearSelected(){
 
 
 function checkOut(){
-    $("#go_to_order").text("提交中....")
+    $("#go_to_order").text("Submitting....")
     var Cid = sessionStorage.getItem("Customer_ID")
     var customer = AV.Object.createWithoutData('Customer', Cid)
 
@@ -131,7 +131,7 @@ function quantityChanged(dom, cartItemId) {
 }
 
 function deleteCartItem(dom, cartItemId, title) {
-    if (confirm("从购物车中删除" + title + "？")) {
+    if (confirm("Delete from the shopping cart" + title + "？")) {
         var cartItem = AV.Object.createWithoutData('Shoping_Cart', cartItemId)
         cartItem.destroy();
         $(dom).closest("tr").remove();

@@ -13,16 +13,16 @@ var romIsExist = false;
 function addToCart(dom) {
     var Cid = sessionStorage.getItem("Customer_ID")
     if (!Cid) {
-        alert("请先登陆！")
+        alert("Please login in first！")
         window.location.href = "index.html";
         return
     }
     var customer = AV.Object.createWithoutData('Customer', Cid)
     if (!$(dom).attr("skuId")) {
         if(romIsExist){
-            alert("请选择颜色和ROM")
+            alert("Please choose colour and ROM")
         }else{
-            alert("请选择颜色")
+            alert("Please choose colour")
         }
         return;
     }
@@ -43,7 +43,7 @@ function addToCart(dom) {
             cart.set("sku", sku)
             cart.save();
         }
-        $(dom).text("已添加到购物车")
+        $(dom).text("Already added to the Shoping Cart")
         setTimeout(function () {
             $(dom).text("Add to cart")
         }, 1000)

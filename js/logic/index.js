@@ -6,7 +6,7 @@ AV.init({
 function addToCart(id,dom){
     var Cid = sessionStorage.getItem("Customer_ID")
     if(!Cid){
-        alert("请先登陆！")
+        alert("Please Login First！")
         $('#myModal88').modal('show');
         return
     }
@@ -27,7 +27,7 @@ function addToCart(id,dom){
             cart.set("sku",sku)
             cart.save();
         }
-        $(dom).text("已添加到购物车")
+        $(dom).text("Already added to the shopping cart")
         setTimeout(function(){
             $(dom).text("Add to cart")
         },1000)
@@ -83,11 +83,11 @@ $(function(){
         query.equalTo("email",email)
         query.find().then((results)=>{
             if(results.length>0){
-                alert("邮箱重复");
+                alert("repeated emails");
                 return
             }
             if(c_pwd != pwd){
-                alert("两次密码输入不一致");
+                alert("passwords are inconsistent");
                 return
             }
             var Customer = AV.Object.extend('Customer');
@@ -118,7 +118,7 @@ $(function(){
             if(res.length > 0){
                 login(res[0].id,res[0].attributes.nickName)
             }else{
-                alert("用户名或密码错误");
+                alert("Incorrect Username or Password");
                 return
             }
         })
@@ -140,7 +140,7 @@ $(function(){
 
     function logined(name){
         $(".w3l_login > a").prepend(name).attr("data-target",null).on("click",function(){
-            if(confirm("退出登陆？")){
+            if(confirm("Login out？")){
                 logout();
             }
         }) 
