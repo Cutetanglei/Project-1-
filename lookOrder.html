@@ -37,8 +37,7 @@
 				<form action="#" method="post" class="last">
 					<input type="hidden" name="cmd" value="_cart" />
 					<input type="hidden" name="display" value="1" />
-					<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-				</form>
+</form>
 			</div>
 		</div>
 
@@ -57,7 +56,7 @@
 					</button>
 				</div>
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav" style="background:transparent">
 						<li><a href="index.html" class="act">Home</a></li>
 						<!-- Mega Menu -->
 						<li class="dropdown">
@@ -103,63 +102,63 @@
 
 	<div class="mainContent comWidth">
 		<div class="list-info-item">
-			<h4 class="title">收货信息</h4>
+			<h4 class="title">Shipping address</h4>
 			<div class="content">
-				<label>*<span>选择地区:</span><select name="address" id="select-address">
-					<option value="1">重庆市 九龙坡区</option>
-					<option value="1">重庆市 江北区</option>
+				<label>*<span>Region:</span><select name="address" id="select-address" style="color: #030303">
+					<option value="1">New Territories</option>
+					<option value="1">HongKong Island</option>
 				</select></label>
-				<label class="detail-add">*<span>详细地址:</span><input placeholder="只能填入26个汉字" type="text" name="detail-add"></label>
-				<label class="consignee">*<span>收&nbsp;&nbsp;货&nbsp;&nbsp;人:</span><input placeholder="只能填入10个汉字" type="text" name="consignee"></label>
-				<label class="phone-num">*<span>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机:</span><input placeholder="如13212325263" type="text" name="phone-num">
-					<span>或固定电话:</span><input placeholder="区号" type="text" ><em>-</em>
-					<input placeholder="电话号码" type="text" ><em>-</em>
-					<input placeholder="分机号(可选)" type="text" >
+				<label class="detail-add">*<span>Details:</span><input placeholder="Street address,P.O.box,company name,c/o" type="text" name="detail-add"></label>
+				<label class="consignee">*<span>Customer name:</span><input type="text" name="consignee"></label>
+				<label class="phone-num">*<span>Mobile &nbsp;&nbsp;Phones:</span><input placeholder="(+852)" type="text" name="phone-num">
+					<span>or Fixed Number:</span><input  type="text" ><em>-</em>
+					<input  type="text" ><em>-</em>
+					<input  type="text" >
 				</label>
-				<button class="btn-confirm">确认收货地址</button>
+				<button class="btn-confirm" style="width:150px">Confirm address</button>
 			</div>
 		</div>
 		<div class="list-info-item">
-			<h4 class="title">支付方式</h4>
+			<h4 class="title">Payment</h4>
 			<div class="content pay">
 				<form action="#">
 					<label >
-						<input type="radio" name="pay"><em>微信支付</em><img src="images/icon/wx.jpg" alt="微信图标">用微信扫一扫就能支付!
+						<input type="radio" name="pay"><em>Alipay</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recommended 
 					</label>
 					<label >
-						<input type="radio" name="pay"><em>货到支付</em>送货上门后再付款,现金或者刷卡,千万别点要收手续费!
+						<input type="radio" name="pay"><em>pay on delivery</em>Pay after receiving the goods
 					</label>
 				</form>
 
 			</div>
 		</div>
 	  <div class="list-info-item">
-			<h4 class="title">发票信息</h4>
+			<h4 class="title">Invoice information</h4>
 			<div class="content bill">
 
 				<form action="#">
-					<label ><input type="checkbox" checked>需要发票</label>
-					<label><em>*</em><span>发票类型:</span><select name="bill" id="select-bill-type">
-						<option value="1">商业零售发票</option>
-						<option value="2">增值税发票</option>
+					<label ><input type="checkbox" checked>Need Invoice</label>
+					<label><em>*</em><span>&nbsp;&nbsp;Invoice Type:</span><select name="bill" id="select-bill-type">
+						<option value="1">merchandise invoice</option>
+						<option value="2">value added tax invoice</option>
 					</select></label>
-					<label><em>*</em><span>发票抬头:</span><select name="bill" id="select-bill-title">
-						<option value="1">个人</option>
-						<option value="2">单位</option>
+					<label><em>*</em><span>&nbsp;&nbsp;Invoice Title:</span><select name="bill" id="select-bill-title">
+						<option value="1">Person</option>
+						<option value="2">Company</option>
 					</select>
-					<input type="text" placeholder="郎爷爷">
+					<input type="text" >
 				</label>
-				<input type="button" value="保存" name="save"><input type="button" value="取消" name="cancel">
+				<input type="button" value="Save" name="save"><input type="button" value="Cancel" name="cancel">
 			</form>
 
 		</div>
 		</div>
 <div class="list-info-item cl">
-    <h4 class="title">订单结算</h4>
+    <h4 class="title">Order Settlement</h4>
 		<div class="content confirm-submit">
 			<div class="subinfo fr">
-			<div class="total">总计<span>￥1996.00</span></div>
-				<input type="button" value="提交订单">
+			<div class="total">In Total<span>$1996.00</span></div>
+				<input type="button" value="Place Order" style="width:150px;align-content:left" onClick="{location.href='paymentresult.html'}">
 			</div>
 		</div>
 
@@ -181,61 +180,60 @@
 		</div>
 	</div>
 <div class="footer">
-  <div class="container">
-    <div class="w3_footer_grids">
-      <div class="col-md-3 w3_footer_grid">
-        <h3>Contact</h3>
-        <p>Please contact us if you have any problem.</p>
-        <ul class="address">
-          <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>The Chinese University <br>of Hong  Kong, Shatin, NT, Hong Kong</li>
-          <li><i class="glyphicon glyphicon-envelope" aria-hidden="true" ></i><a href="mailto:info@example.com">1155100000@link.cuhk.edu.hk</a></li>
-          <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>852 9583 0000</li>
-        </ul>
-      </div>
-      <div class="col-md-3 w3_footer_grid">
-        <h3>Information</h3>
-        <ul class="info">
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="mail.html">Contact Us</a></li>
-          <li><a href="codes.html">Short Codes</a></li>
-          <li><a href="faq.html">FAQ's</a></li>
-          <li><a href="products.html">Special Products</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3 w3_footer_grid">
-        <h3>Category</h3>
-        <ul class="info">
-          <li><a href="products.html">Mobiles</a></li>
-          <li><a href="products1.html">Accessories</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3 w3_footer_grid">
-        <h3>Profile</h3>
-        <ul class="info">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="products.html">Today's Deals</a></li>
-        </ul>
-        <h4>Follow Us</h4>
-        <div class="agileits_social_button">
-          <ul>
-            <li><a href="#" class="facebook"> </a></li>
-            <li><a href="#" class="twitter"> </a></li>
-            <li><a href="#" class="google"> </a></li>
-            <li><a href="#" class="pinterest"> </a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="clearfix"> </div>
-    </div>
-  </div>
-  <div class="footer-copy">
-    <div class="footer-copy1">
-      <div class="footer-copy-pos"> <a href="#home1" class="scroll"><img src="images/arrow.png" alt=" " class="img-responsive" /></a> </div>
-    </div>
-    <div class="container">
-      <p>&copy; 2018 G36. All rights reserved | Design by G36 Company</p>
-    </div>
-  </div>
-</div>
+		<div class="container">
+			<div class="w3_footer_grids">
+				<div class="col-md-3 w3_footer_grid">
+					<h3>Contact</h3>
+					<ul class="address">
+						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>The Chinese University of Hong Kong, Shatin, NT, Hong Kong</li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">1155@link.cuhk.edu.hk</a></li>
+						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>852 9583 0000</li>
+					</ul>
+				</div>
+				<div class="col-md-3 w3_footer_grid">
+					<h3>Information</h3>
+					<ul class="info"> 
+						<li><a href="about.html">About Us</a></li>
+						<li><a href="mail.html">Contact Us</a></li>
+						<li><a href="codes.html">Short Codes</a></li>
+						<li><a href="faq.html">FAQ's</a></li>
+						<li><a href="products.html">Special Products</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 w3_footer_grid">
+					<h3>Category</h3>
+					<ul class="info"> 
+						<li><a href="products.html">Mobiles</a></li>
+						<li><a href="products1.html">Laptops</a></li>
+						<li><a href="products.html">Purifiers</a></li>
+						<li><a href="products1.html">Wearables</a></li>
+						<li><a href="products2.html">Kitchen</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 w3_footer_grid">
+					<h3>Profile</h3>
+					<ul class="info"> 
+						<li><a href="index.html">Home</a></li>
+						<li><a href="products.html">Today's Deals</a></li>
+					</ul>
+					<h4>Follow Us</h4>
+					<div class="agileits_social_button">
+						<ul>
+							<li><a href="#" class="facebook"> </a></li>
+							<li><a href="#" class="twitter"> </a></li>
+							<li><a href="#" class="google"> </a></li>
+							<li><a href="#" class="pinterest"> </a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<div class="footer-copy">
+			<div class="container">
+				<p>&copy; 2018 G36. All rights reserved | Design by G36 Company</p>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
