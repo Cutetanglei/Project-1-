@@ -346,7 +346,7 @@
 		<script src="js/logic/shopping-cart.js"></script>
 		<script src="js/template-web.js"></script>
 		<script id="cart_item_temp" type="text/html">
-			{{each datas}}
+			{{each}}
 			<tr cartItemId="{{$value.cart.id}}" 
 				discountPrice="{{$value.sku.get('discountPrice')}}" 
 				originalPrice="{{$value.sku.get('originalPrice')}}" 
@@ -388,7 +388,7 @@
 					<a href="javascript:void(0)" onclick="deleteCartItem(this,'{{$value.cart.id}}','{{$value.pro.get('title')+$value.sku.get('color')}}')">Delete</a>
 				</td>
 			</tr>
-			{{/each data}}
+			{{/each}}
 		</script>
 </body>
 

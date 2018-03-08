@@ -31,16 +31,14 @@ function addToCart(id,dom){
         setTimeout(function(){
             $(dom).text("Add to cart")
         },1000)
-    })
-    
-    
+    })  
 }
 $(function(){
     
     function loadData(){
         // 加载手机数据
         var phone_pro = new AV.Query('Product')
-        phone_pro.equalTo("categoryName","Mobile Phones")
+        phone_pro.equalTo("categoryName","Mobile Phone")
 
         var phone_sku = new AV.Query('Product_SKU');
         phone_sku.limit(3)

@@ -1,0 +1,20 @@
+.property{
+    margin-bottom: 2em;
+}
+
+.property .property_title{
+    font-size: 1em;
+    color: #3c43a4;
+    margin: 0 0 1em;
+}
+
+.property .radio, .checkbox{
+    display: inline-block;
+    margin-right: 2em;
+}
+.property .checkbox.disabled{
+    color: #bbbbbb;
+}
+.property .checkbox.disabled i{
+    background-color: #EDEDED;
+}

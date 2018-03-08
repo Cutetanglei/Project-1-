@@ -155,7 +155,7 @@ $(function () {
                 cart: res[i]
             })
         }
-        $("#cart_item_body").html(template("cart_item_temp", { datas: data }))
+        $("#cart_item_body").html(template("cart_item_temp", data))
         combined();
     })
 
