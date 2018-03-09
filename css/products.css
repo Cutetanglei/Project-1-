@@ -1,0 +1,9 @@
+.w3ls_mobiles_grid_left_grid_sub{
+    padding: 1em 1.5em 1em;
+}
+.w3ls_mobiles_grid_left_grid_sub .checkbox{
+    font-weight: inherit;
+}
+.w3ls_mobiles_grid_left_grid_sub .checkbox:not(:last-child){
+    margin-bottom: 1.5em;
+}
