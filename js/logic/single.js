@@ -178,7 +178,6 @@ $(function () {
                 } else {
                     $("#rom_property").remove();
                 }
-                console.log(selected)
                 $("[skuColor='" + selected.get("color") + "']").attr("checked", true);
                 $("[skuRom='" + selected.get("rom") + "']").attr("checked", true);
                 confirmSku();
