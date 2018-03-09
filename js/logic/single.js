@@ -4,9 +4,12 @@ AV.init({
 });
 
 var pro_id = GetRequest()["id"]
+var sku_id = GetRequest()["skuid"]
 if (!pro_id) {
     window.location.href = "index.html";
 }
+
+
 var Product = AV.Object.createWithoutData('Product', pro_id)
 var romIsExist = false;
 
@@ -149,7 +152,13 @@ $(function () {
             sku_query.find().then(function (data) {
                 var color = []
                 var rom = []
+                var selected;
                 for (var i = 0; i < data.length; i++) {
+                    if(data[i].id == sku_id){
+                        selected = data[i]
+                    }else if(!selected){
+                        selected = data[0]
+                    }
                     var item_color = data[i].get("color")
                     var item_rom = data[i].get("rom")
 
@@ -169,8 +178,9 @@ $(function () {
                 } else {
                     $("#rom_property").remove();
                 }
-                $("[skuColor='" + data[0].get("color") + "']").attr("checked", true);
-                $("[skuRom='" + data[0].get("rom") + "']").attr("checked", true);
+                console.log(selected)
+                $("[skuColor='" + selected.get("color") + "']").attr("checked", true);
+                $("[skuRom='" + selected.get("rom") + "']").attr("checked", true);
                 confirmSku();
             })
         })
