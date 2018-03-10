@@ -161,7 +161,7 @@ function loadSku() {
 function loadProduct() {
     var product_query = new AV.Query("Product");
     if (queryParam.search) {
-        var regExp = new RegExp(queryParam.search, 'i');
+        var regExp = new RegExp(queryParam.search,'i');
         product_query.matches("title", regExp)
     }
     if (queryParam.categories.length == 1) {
@@ -253,7 +253,7 @@ $(function () {
 
     var search = GetRequest()["search"]
     if(search){
-        queryParam.search = search
+        queryParam.search = search.replace('+',' ')
     }
 
 
