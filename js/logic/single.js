@@ -135,6 +135,15 @@ function confirmSku() {
 
 $(function () {
     loadProductInfo(pro_id);
+    var name = sessionStorage.getItem("Customer_Name")
+    if(name){
+        $(".w3l_login > a").prepend(name).attr("data-target",null).on("click",function(){
+            if(confirm("Login out？")){
+                logout();
+            }
+        }) 
+        $(".w3l_login > a > span").removeClass("glyphicon-user").addClass("glyphicon-remove")
+    }
     
 
     function loadProductInfo(id) {
