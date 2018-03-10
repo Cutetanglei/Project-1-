@@ -7,3 +7,9 @@
 .w3ls_mobiles_grid_left_grid_sub .checkbox:not(:last-child){
     margin-bottom: 1.5em;
 }
+.w3ls_mobiles_grid_right_grid3{
+    margin: 2em 0;
+}
+.w3ls_mobiles_grid_right_grid3 h5{
+    min-height: 2.5em;
+}
