@@ -18,36 +18,25 @@
     <div class="page-title">
       <span class="modular fl">
         <i></i>
-        <em>Product ID</em>
+        <em>Product SKU ID</em>
       </span>
 
-    </div>
-    <div class="operate">
-        <input type="text" id="search_name" class="textBox length-long" placeholder="Input product name..." />
-        <input type="button" value="Look Up" onclick="loadData()" class="tdBtn" />
     </div>
     <table class="list-style Interlaced">
       <tr>
         <th>ObjectId</th>
         <th>Product Name</th>
-        <th>Description</th>
-        <th>Category</th>
+        <th>Colro</th>
+        <th>ROM</th>
+        <th>Original Price</th>
+        <th>Discount Price</th>
+        <th>Inventory</th>
         <th>Operation</th>
       </tr>
       <tbody id="pro_box">
 
       </tbody>
     </table>
-    <!-- BatchOperation -->
-    <div style="overflow:hidden;">
-      <!-- Operation -->
-      <div class="BatchOperation fl">
-        <input type="checkbox" id="del" />
-        <label for="del" class="btnStyle middle">Select &nbsp;&nbsp;All</label>
-        <input type="button" value="Delete" class="btnStyle" />
-      </div>
-      
-    </div>
   </div>
 </body>
 <script src="http://cdn1.lncld.net/static/js/3.6.0/av-min.js"></script>
@@ -59,17 +48,18 @@
     <td>
       <span>
         <i>
-            <a href="M_product_sku_list.html?id={{$value.id}}" target="mainCont">
-              {{$value.id}}
-            </a>
+            {{$value.id}}
         </i>
       </span>
     </td>
-    <td>{{$value.get("title")}}</td>
-    <td>{{$value.get("description")}}</span></td>
-    <td>{{$value.get("categoryName")}}</td>
+    <td>{{$value.get("product").get("title")}}</td>
+    <td>{{$value.get("color")}}</span></td>
+    <td>{{$value.get("rom")}}</td>
+    <td>{{$value.get("originalPrice")}}</td>
+    <td>{{$value.get("discountPrice")}}</td>
+    <td>{{$value.get("inventory")}}</td>
     <td>
-      <a href="single.html?id={{$value.id}}" title="查看" target="_blank">
+      <a href="single.html?id={{$value.get('product').id}}&skuid={{$value.id}}" title="查看" target="_blank">
         <img src="images/icon_view.gif" />
       </a>
       <a onclick="delect('{{$value.id}}')" title="删除">
@@ -86,14 +76,27 @@
     appKey: "uYOq35PscfChdJ4Xv8EoqUQb"
   });
 
+    function GetRequest() {
+      var url = location.search; //获取url中"?"符后的字串  
+      var theRequest = new Object();
+      if (url.indexOf("?") != -1) {
+          var str = url.substr(1);
+          strs = str.split("&");
+          for (var i = 0; i < strs.length; i++) {
+              theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+          }
+      }
+      return theRequest;
+  }
+
+  var pro_id = GetRequest()["id"]
+
   function loadData(){
-    var pro_query = new AV.Query("Product");
-    var search = $("#search_name").val().trim()
-    if (search) {
-      var regExp = new RegExp(search,'i');
-      pro_query.matches('title', regExp);
-    }
-    pro_query.find().then(function(datas){
+    var sku_query = new AV.Query("Product_SKU");
+    var pro =  AV.Object.createWithoutData('Product', pro_id);
+    sku_query.equalTo("product",pro)
+    sku_query.include("product")
+    sku_query.find().then(function(datas){
       var html = template("tr_tmp",datas)
       $("#pro_box").html(html);
     })
@@ -101,21 +104,12 @@
 
   function delect(id){
       if(confirm("Confirm deletion?")){
-
-        var pro = AV.Object.createWithoutData('Product', id);
-        var sku_query = new AV.Query("Product_SKU")
-        sku_query.equalTo("product",pro)
-        sku_query.find().then(function(datas){
-          datas.map(function(a){
-            a.destroy();
-          })
-        })
-        pro.destroy().then(function(){
+        var sku = AV.Object.createWithoutData('Product_SKU', id);
+        sku.destroy().then(function(){
           loadData();
         });
       }
   }
-
   loadData();
 </script>
 
