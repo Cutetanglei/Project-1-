@@ -11,6 +11,7 @@ input[name='cart_item_checkbox']{
     float: left;
     margin-top: 0px;
     height: 90px;
+    margin-right: 1em;
 }
 
 .cart_item_table{

@@ -42,6 +42,7 @@ function checkOut(){
     var Cid = sessionStorage.getItem("Customer_ID")
     var customer = AV.Object.createWithoutData('Customer', Cid)
 
+    var order_total_price = 0
     var order = new AV.Object("Order")
     order.set("customer",customer)
     order.save().then(function(o){
@@ -54,12 +55,24 @@ function checkOut(){
                 order_item.set("sku",item.get("sku"))
                 order_item.set("quantity",item.get("quantity"))
                 order_item.set("order",o)
+                 
+                var subtotal = parseInt(item.get("sku").get("discountPrice")) * parseInt(item.get("quantity"))
+                order_item.set("subtotal",subtotal)
+                order_total_price += subtotal
                 order_item.save();
                 cart_item.destroy();
             });
         }
+       
         setTimeout(function(){
-            window.location.href = "lookOrder.html?orderId="+o.id
+            var order =  AV.Object.createWithoutData('Order', o.id)
+            order.set("totalPrice",order_total_price)
+            order.save().then(function(){
+                window.location.href = "lookOrder.html?orderId="+o.id
+            },function(){
+                alert("System error")
+            });
+            
         },1500)
     });
 }

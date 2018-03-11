@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>购物车和结算页</title>
@@ -8,42 +9,48 @@
 	<link rel="stylesheet" href="css/account1.css" type="text/css">
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="css/lookOrder.css">
 	<style type="text/css">
-	body,td,th {
-	font-family: "Open Sans", sans-serif;
-}
-    </style>
+		body,
+		td,
+		th {
+			font-family: "Open Sans", sans-serif;
+		}
+	</style>
 </head>
+
 <body class="grey_bg">
-<div class="header"> 
-	<div class="container">
+	<div class="header">
+		<div class="container">
 			<div class="w3l_login">
-				<a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+				<a href="#" data-toggle="modal" data-target="#myModal88">
+					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				</a>
 			</div>
 			<div class="w3l_logo">
-				<h1><a href="index.html">&emsp;&emsp;&emsp;G 3 6<span> Your G36. Your telephone.</span></a></h1>
+				<h1>
+					<a href="index.html">&emsp;&emsp;&emsp;G 3 6
+						<span> Your G36. Your telephone.</span>
+					</a>
+				</h1>
 			</div>
-		  <div class="search">
+			<div class="search">
 				<input class="search_box" type="checkbox" id="search_box">
-				<label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
+				<label class="icon-search" for="search_box">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</label>
 				<div class="search_form">
-					<form action="#" method="post">
-						<input type="text" name="Search" placeholder="Search...">
+					<form action="products.html" method="get">
+						<input type="text" name="search" placeholder="Search...">
 						<input type="submit" value="Send">
 					</form>
 				</div>
 			</div>
-			<div class="cart cart box_1">
-				<form action="#" method="post" class="last">
-					<input type="hidden" name="cmd" value="_cart" />
-					<input type="hidden" name="display" value="1" />
-</form>
-			</div>
 		</div>
 
-  <!-- nav end -->
+		<!-- nav end -->
 	</div>
-<div class="navigation">
+	<div class="navigation">
 		<div class="container">
 			<nav class="navbar navbar-default">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -57,42 +64,19 @@
 				</div>
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav" style="background:transparent">
-						<li><a href="index.html" class="act">Home</a></li>
-						<!-- Mega Menu -->
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
-							<ul class="dropdown-menu multi-column columns-3">
-								<div class="row">
-									<div class="col-sm-3">
-										<ul class="multi-column-dropdown">
-											<h6>Mobiles</h6>
-											<li><a href="products.html">Mobile Phones</a></li>
-											<li><a href="products.html">Mp3 Players <span>New</span></a></li>
-											<li><a href="products.html">Popular Models</a></li>
-											<li><a href="products.html">All Tablets<span>New</span></a></li>
-										</ul>
-									</div>
-									<div class="col-sm-3">
-										<ul class="multi-column-dropdown">
-											<h6>Accessories</h6>
-											<li><a href="products1.html">Laptop</a></li>
-											<li><a href="products1.html">Desktop</a></li>
-											<li><a href="products1.html">Wearables <span>New</span></a></li>
-											<li><a href="products1.html"><i>Summer Store</i></a></li>
-										</ul>
-									</div>
-									<div class="col-sm-4">
-										<div class="w3ls_products_pos">
-											<h4>30%<i>Off/-</i></h4>
-											<img src="images/1.jpg" alt=" " class="img-responsive" />
-										</div>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</ul>
+						<li>
+							<a href="index.html" class="act">Home</a>
 						</li>
-						<li><a href="about.html">About Us</a></li>
-						<li><a href="mail.html">Mail Us</a></li>
+						<!-- Mega Menu -->
+						<li>
+							<a href="products.html">Products</a>
+						</li>
+						<li>
+							<a href="about.html">About Us</a>
+						</li>
+						<li>
+							<a href="mail.html">Mail Us</a>
+						</li>
 					</ul>
 				</div>
 			</nav>
@@ -104,67 +88,85 @@
 		<div class="list-info-item">
 			<h4 class="title">Shipping address</h4>
 			<div class="content">
-				<label>*<span>Region:</span><select name="address" id="select-address" style="color: #030303">
-					<option value="1">New Territories</option>
-					<option value="1">HongKong Island</option>
-				</select></label>
-				<label class="detail-add">*<span>Details:</span><input placeholder="Street address,P.O.box,company name,c/o" type="text" name="detail-add"></label>
-				<label class="consignee">*<span>Customer name:</span><input type="text" name="consignee"></label>
-				<label class="phone-num">*<span>Mobile &nbsp;&nbsp;Phones:</span><input placeholder="(+852)" type="text" name="phone-num">
-					<span>or Fixed Number:</span><input  type="text" ><em>-</em>
-					<input  type="text" ><em>-</em>
-					<input  type="text" >
+				<label>*
+					<span>Region:</span>
+					<select name="address" id="select-region" style="color: #030303">
+						<option value="New Territories">New Territories</option>
+						<option value="HongKong Island">HongKong Island</option>
+					</select>
 				</label>
-				<button class="btn-confirm" style="width:150px">Confirm address</button>
+				<label class="detail-add">*
+					<span>Details:</span>
+					<input placeholder="Street address,P.O.box,company name,c/o" id="address_desc" type="text" name="detail-add">
+				</label>
+				<label class="consignee">*
+					<span>Customer name:</span>
+					<input type="text" id="contactName" name="consignee">
+				</label>
+				<label class="phone-num">*
+					<span>Mobile &nbsp;&nbsp;Phones:</span>
+					<input placeholder="(+852)" id="contactPhone" type="text" name="phone-num">
+				</label>
+				<!-- <button class="btn-confirm" style="width:150px">Confirm address</button> -->
 			</div>
 		</div>
 		<div class="list-info-item">
 			<h4 class="title">Payment</h4>
 			<div class="content pay">
 				<form action="#">
-					<label >
-						<input type="radio" name="pay"><em>Alipay</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recommended 
+					<label>
+						<input type="radio" value="ALIPAY" name="payment">
+						<em>Alipay</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recommended
 					</label>
-					<label >
-						<input type="radio" name="pay"><em>pay on delivery</em>Pay after receiving the goods
+					<label>
+						<input type="radio" value="DELIVERY" name="payment" checked="checked">
+						<em>pay on delivery</em>Pay after receiving the goods
 					</label>
 				</form>
 
 			</div>
 		</div>
-	  <div class="list-info-item">
+		<div class="list-info-item">
 			<h4 class="title">Invoice information</h4>
 			<div class="content bill">
 
 				<form action="#">
-					<label ><input type="checkbox" checked>Need Invoice</label>
-					<label><em>*</em><span>&nbsp;&nbsp;Invoice Type:</span><select name="bill" id="select-bill-type">
-						<option value="1">merchandise invoice</option>
-						<option value="2">value added tax invoice</option>
-					</select></label>
-					<label><em>*</em><span>&nbsp;&nbsp;Invoice Title:</span><select name="bill" id="select-bill-title">
-						<option value="1">Person</option>
-						<option value="2">Company</option>
-					</select>
-					<input type="text" >
-				</label>
-				<input type="button" value="Save" name="save"><input type="button" value="Cancel" name="cancel">
-			</form>
+					<label>
+						<input type="checkbox" checked>Need Invoice</label>
+					<label>
+						<em>*</em>
+						<span>&nbsp;&nbsp;Invoice Type:</span>
+						<select name="bill" id="select-bill-type">
+							<option value="1">merchandise invoice</option>
+							<option value="2">value added tax invoice</option>
+						</select>
+					</label>
+					<label>
+						<em>*</em>
+						<span>&nbsp;&nbsp;Invoice Title:</span>
+						<input type="text">
+					</label>
+					<!-- <input type="button" value="Save" name="save"> -->
+					<!-- <input type="button" value="Cancel" name="cancel"> -->
+				</form>
 
-		</div>
-		</div>
-<div class="list-info-item cl">
-    <h4 class="title">Order Settlement</h4>
-		<div class="content confirm-submit">
-			<div class="subinfo fr">
-			<div class="total">In Total<span>$1996.00</span></div>
-				<input type="button" value="Place Order" style="width:150px;align-content:left" onClick="{location.href='paymentresult.html'}">
 			</div>
 		</div>
+		<div class="list-info-item cl">
+			<h4 class="title">Order Settlement</h4>
+			<div class="content confirm-submit">
+				<div class="subinfo fr">
+					<div class="total">In Total
+						<span id="totalPrice">$0</span>
+					</div>
+					<input type="button" value="Place Order" onClick="settlement()">
+				</div>
+			</div>
 
-	  </div>
-</div><!-- mainContent end -->
-<div class="newsletter">
+		</div>
+	</div>
+	<!-- mainContent end -->
+	<div class="newsletter">
 		<div class="container">
 			<div class="col-md-6 w3agile_newsletter_left">
 				<h3>Newsletter</h3>
@@ -179,50 +181,87 @@
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-<div class="footer">
+	<div class="footer">
 		<div class="container">
 			<div class="w3_footer_grids">
 				<div class="col-md-3 w3_footer_grid">
 					<h3>Contact</h3>
 					<ul class="address">
-						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>The Chinese University of Hong Kong, Shatin, NT, Hong Kong</li>
-						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">1155@link.cuhk.edu.hk</a></li>
-						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>852 9583 0000</li>
+						<li>
+							<i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>The Chinese University of Hong Kong, Shatin, NT, Hong Kong</li>
+						<li>
+							<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
+							<a href="mailto:info@example.com">1155@link.cuhk.edu.hk</a>
+						</li>
+						<li>
+							<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>852 9583 0000</li>
 					</ul>
 				</div>
 				<div class="col-md-3 w3_footer_grid">
 					<h3>Information</h3>
-					<ul class="info"> 
-						<li><a href="about.html">About Us</a></li>
-						<li><a href="mail.html">Contact Us</a></li>
-						<li><a href="codes.html">Short Codes</a></li>
-						<li><a href="faq.html">FAQ's</a></li>
-						<li><a href="products.html">Special Products</a></li>
+					<ul class="info">
+						<li>
+							<a href="about.html">About Us</a>
+						</li>
+						<li>
+							<a href="mail.html">Contact Us</a>
+						</li>
+						<li>
+							<a href="codes.html">Short Codes</a>
+						</li>
+						<li>
+							<a href="faq.html">FAQ's</a>
+						</li>
+						<li>
+							<a href="products.html">Special Products</a>
+						</li>
 					</ul>
 				</div>
 				<div class="col-md-3 w3_footer_grid">
 					<h3>Category</h3>
-					<ul class="info"> 
-						<li><a href="products.html">Mobiles</a></li>
-						<li><a href="products1.html">Laptops</a></li>
-						<li><a href="products.html">Purifiers</a></li>
-						<li><a href="products1.html">Wearables</a></li>
-						<li><a href="products2.html">Kitchen</a></li>
+					<ul class="info">
+						<li>
+							<a href="products.html">Mobiles</a>
+						</li>
+						<li>
+							<a href="products1.html">Laptops</a>
+						</li>
+						<li>
+							<a href="products.html">Purifiers</a>
+						</li>
+						<li>
+							<a href="products1.html">Wearables</a>
+						</li>
+						<li>
+							<a href="products2.html">Kitchen</a>
+						</li>
 					</ul>
 				</div>
 				<div class="col-md-3 w3_footer_grid">
 					<h3>Profile</h3>
-					<ul class="info"> 
-						<li><a href="index.html">Home</a></li>
-						<li><a href="products.html">Today's Deals</a></li>
+					<ul class="info">
+						<li>
+							<a href="index.html">Home</a>
+						</li>
+						<li>
+							<a href="products.html">Today's Deals</a>
+						</li>
 					</ul>
 					<h4>Follow Us</h4>
 					<div class="agileits_social_button">
 						<ul>
-							<li><a href="#" class="facebook"> </a></li>
-							<li><a href="#" class="twitter"> </a></li>
-							<li><a href="#" class="google"> </a></li>
-							<li><a href="#" class="pinterest"> </a></li>
+							<li>
+								<a href="#" class="facebook"> </a>
+							</li>
+							<li>
+								<a href="#" class="twitter"> </a>
+							</li>
+							<li>
+								<a href="#" class="google"> </a>
+							</li>
+							<li>
+								<a href="#" class="pinterest"> </a>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -235,5 +274,10 @@
 			</div>
 		</div>
 	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="http://cdn1.lncld.net/static/js/3.6.0/av-min.js"></script>
+	<script src="js/logic/lookOrder.js"></script>
+	<script src="js/template-web.js"></script>
 </body>
+
 </html>
