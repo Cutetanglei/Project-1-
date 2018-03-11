@@ -1,102 +1,163 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<title>订单详情</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="css/adminStyle.css" rel="stylesheet" type="text/css" />
+  <title>订单详情</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link href="css/adminStyle.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
- <div class="wrap">
-  <div class="page-title">
-    <span class="modular fl"><i class="order"></i><em>Order Number：2015041803225</em></span>
+  <div class="wrap">
+    <div class="page-title">
+      <span class="modular fl">
+        <i class="order"></i>
+        <em id="orderId">Order Number：2015041803225</em>
+      </span>
+    </div>
+    <dl class="orderDetail">
+      <dt class="order-h">Order Details</dt>
+      <dd>
+        <ul>
+          <li>
+            <span class="h-cont h-right">Contact Name：</span>
+            <span class="h-cont h-left" id="contactName"></span>
+          </li>
+          <li>
+            <span class="h-cont h-right">ContactNumber：</span>
+            <span class="h-cont h-left" id="contactPhone"></span>
+          </li>
+          <li>
+            <span class="h-cont h-right">DeliverAddress：</span>
+            <span class="h-cont h-left" id="address"></span>
+          </li>
+          <li>
+            <span class="h-cont h-right">Status：</span>
+            <span class="h-cont h-left" id="state"></span>
+          </li>
+          <li>
+            <span class="h-cont h-right">Ordering &nbsp;Time：</span>
+            <span class="h-cont h-left" id="createdAt"></span>
+          </li>
+        </ul>
+      </dd>
+      <dd>
+        <table class="list-style">
+          <thead>
+            <th>ProductName</th>
+            <th>Colour</th>
+            <th>Storage</th>
+            <th>Amount</th>
+            <th>Subtotal</th>
+          </thead>
+          <tbody id="tbody">
+
+          </tbody>
+
+        </table>
+        <br>
+        <span style="font-size:15px;font-weight:bold;float: right">
+          In Total
+          <strong id="totalPrice">0</strong>
+        </span>
+        <br>
+      </dd>
+      <dd>
+        <!-- Operation -->
+        <div class="BatchOperation" style="text-align: right;">
+          <input type="button" onclick="changeState('Cancel')" value="Cancel Order" class="btnStyle" />
+          <input type="button" onclick="changeState('Arrange shipment')" value="Arrange shipment" class="btnStyle" />
+        </div>
+      </dd>
+    </dl>
   </div>
-  <dl class="orderDetail">
-   <dt class="order-h">Order Details</dt>
-   <dd>
-    <ul>
-     <li>
-      <span class="h-cont h-right">Contact Name：</span>
-      <span class="h-cont h-left">Sophia</span>
-     </li>
-     <li>
-      <span class="h-cont h-right">ContactNumber：</span>
-      <span class="h-cont h-left">15825518194</span>
-     </li>
-     <li>
-      <span class="h-cont h-right">DeliverAddress：</span>
-      <span class="h-cont h-left">Fanling Center</span>
-     </li>
-     <li>
-      <span class="h-cont h-right">Payment Status：</span>
-      <span class="h-cont h-left">NoPaid</span>
-     </li>
-     <li>
-      <span class="h-cont h-right">Ordering  &nbsp;Time：</span>
-      <span class="h-cont h-left">2015-04-18 13:25</span>
-     </li>
-     <li>
-      <span class="h-cont h-right">Payment &nbsp;&nbsp;Time：</span>
-      <span class="h-cont h-left">2015-04-18 13:35</span>
-     </li>
-    </ul>
-   </dd>
-   <dd style="padding:1em 0;">
-    <span><b>Message：</b></span>
-    <span>...Congratulations!~It's gonna end</span>
-   </dd>
-   <dd>
-    <table class="list-style">
-     <tr>
-		 <th>ProductId</th>
-      <th>ProductName</th>
-      <th>Colour</th>
-      <th>Storage</th>
-      <th>Amount</th>
-      <th>Subtotal</th>
-     </tr>
-     <tr>
-      <td>5aa151139545040065de6563</td>
-      <td>GphoneX</td>
-      <td>
-       <span>
-		Silver
-       </span>
-      </td>
-      <td>256G</td>
-      <td>
-       <span>
-        <em>1</em>
-       </span>
-      </td>
-		 <td>9888</td>
-     </tr>
-     <tr>
-      <td colspan="6" style="width: 1216px">
-       <div class="fr" ><span style="font-size:15px;font-weight:bold;"> <em>In Total</em> <strong>9888</strong> </span></div>
-      </td>
-     </tr>
-    </table>
-   </dd>
-   <dd>
-    <table class="noborder">
-     <tr>
-      <td width="10%" style="text-align:right;"><b>Manager&nbsp;&nbsp;&nbsp;&nbsp;<br> Operation：</b></td>
-      <td>
-       <textarea class="block" style="width:80%;height:35px;outline:none;"></textarea>
-      </td>
-     </tr>
-    </table>
-   </dd>
-   <dd>
-      <!-- Operation -->
-	  <div class="BatchOperation">
-	   <input type="button" value="Print Order" class="btnStyle"/>
-	   <input type="button" value="Arrange shipment" class="btnStyle"/>
-	   <input type="button" value="Refill" class="btnStyle"/>
-	   <input type="button" value="Cancel Order" class="btnStyle"/>
-	  </div>
-   </dd>
-  </dl>
- </div>
 </body>
+<script src="js/jquery.js"></script>
+<script src="http://cdn1.lncld.net/static/js/3.6.0/av-min.js"></script>
+<script src="js/template-web.js"></script>
+
+<script id="tr_tmp" type="text/html"> 
+  {{each}}
+  <tr>
+    <td>{{$value.get("sku").get("product").get("title")}}</td>
+    <td>{{$value.get("sku").get("color")}}</td>
+    <td>{{$value.get("sku").get("rom")}}</td>
+    <td>{{$value.get("quantity")}}</td>
+    <td>{{$value.get("subtotal")}}</td>
+  </tr>
+  {{/each}}
+</script>
+
+<script>
+  AV.init({
+    appId: "yNEf7jl2uUskO9HlnSiKjAWU-gzGzoHsz",
+    appKey: "uYOq35PscfChdJ4Xv8EoqUQb"
+  });
+
+  var orderId = GetRequest()["orderId"]
+
+  var query = new AV.Query('Order');
+  query.get(orderId).then(function (order) {
+    $("#orderId").text("Order Number: " + orderId)
+    $("#contactName").text(order.get("contactName"))
+    $("#contactPhone").text(order.get("contactPhone"))
+    $("#address").text(order.get("address"))
+    $("#state").text(order.get("state"))
+    $("#totalPrice").text("$" + order.get("totalPrice"))
+    $("#createdAt").text(new Date(order.get("createdAt")).format("yyyy-MM-dd hh:mm"))
+
+    // load order item
+    var item_query = new AV.Query('Order_Item');
+    item_query.equalTo("order", order);
+    item_query.include(["sku", "sku.product"])
+    item_query.find().then(function (items) {
+      $("#tbody").html(template("tr_tmp", items))
+    })
+  })
+
+
+  function changeState(stats) {
+    if (confirm("Confirm " + stats + " ?")) {
+      var order = AV.Object.createWithoutData('Order', orderId);
+      order.set("state", stats)
+      order.save().then(function () {
+        alert("Successful")
+        window.location.reload();
+      })
+    }
+  }
+
+  function GetRequest() {
+    var url = location.search; //获取url中"?"符后的字串  
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+      var str = url.substr(1);
+      strs = str.split("&");
+      for (var i = 0; i < strs.length; i++) {
+        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+      }
+    }
+    return theRequest;
+  }
+
+  Date.prototype.format = function (fmt) { //author: meizz   
+    var o = {
+      "M+": this.getMonth() + 1,                 //月份   
+      "d+": this.getDate(),                    //日   
+      "h+": this.getHours(),                   //小时   
+      "m+": this.getMinutes(),                 //分   
+      "s+": this.getSeconds(),                 //秒   
+      "q+": Math.floor((this.getMonth() + 3) / 3), //季度   
+      "S": this.getMilliseconds()             //毫秒   
+    };
+    if (/(y+)/.test(fmt))
+      fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+      if (new RegExp("(" + k + ")").test(fmt))
+        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+  }
+
+</script>
+
 </html>

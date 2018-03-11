@@ -1,85 +1,137 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<title>订单列表</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="css/adminStyle.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery.js"></script>
-<script src="js/public.js"></script>
+  <title>订单列表</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link href="css/adminStyle.css" rel="stylesheet" type="text/css" />
+  <script src="js/jquery.js"></script>
+  <script src="js/public.js"></script>
+  <style>
+    table a {
+      color: blue;
+    }
+  </style>
 </head>
+
 <body>
- <div class="wrap">
-  <div class="page-title">
-    <span class="modular fl"><i class="order"></i><em>Order List</em></span>
+  <div class="wrap">
+    <div class="page-title">
+      <span class="modular fl">
+        <i class="order"></i>
+        <em>Order List</em>
+      </span>
+    </div>
+    <div class="operate">
+      <img src="images/icon_search.gif" />
+      <input type="text" class="textBox length-long" id="search" placeholder="Please input order number or customer name..." />
+      <select id="stauts_select" class="inline-select">
+        <option value="">All</option>
+        <option value="Unpaided">Unpaided</option>
+        <option value="Paied">Paied</option>
+        <option value="Confirmed">Arrange shipment</option>
+        <option value="Cancel">Cancel</option>
+      </select>
+      <input type="button" onclick="loadData()" value="Look Up" class="tdBtn" />
+    </div>
+    <table class="list-style Interlaced">
+      <tr>
+        <th>Order Number</th>
+        <th>Customer Name</th>
+        <th>Ordering Time</th>
+        <th>Deliverying Address</th>
+        <th>Order Amount（$）</th>
+        <th>Order Status</th>
+      </tr>
+      <tbody id="tbody">
+
+      </tbody>
+    </table>
   </div>
-  <div class="operate">
-   <form>
-    <img src="images/icon_search.gif"/>
-    <input type="text" class="textBox length-long" placeholder="Please input order number or customer name..."/>
-    <select class="inline-select">
-     <option>Unpaided</option>
-     <option>Paied</option>
-		<option>Confirmed</option>
-    </select>
-    <input type="button" value="Look Up" class="tdBtn"/>
-   </form>
-  </div>
-  <table class="list-style Interlaced">
-   <tr>
-    <th>Order Number</th>
-    <th>Ordering Time</th>
-    <th>Customer Name</th>
-	<th>Deliverying Address</th>
-    <th style="width:100px">Order Amount（$）</th>
-    <th style="width:100px">Order Status</th>
-    <th style="width:100px">Delivery Status</th>
-	<th style="width:100px">Check Details</th>
-   </tr>
-   <tr>
-    <td>
-     <input type="checkbox"/>
-     <a href="order_detail.html">2015041803225</a>
-    </td>
-    <td class="center">
-     <span class="block">DeatGhost</span>
-     <span class="block">2015-04-18 12:00</span>
-    </td>
-    <td width="450">
-     <span class="block">Sophiahahahahappy!?</span></td>
-    <td class="center">
-		<address>Fanling Center</address>
-    </td>
-    <td class="center">
-     <span>9888</span>
-    </td>
-	       <td class="center">
-     <span>Paied</span>
-    </td>
-	       <td class="center">
-     <span>Wait to be delivered</span>
-    </td>
-    <td class="center">
-     <a href="M_order_detail.html" class="inline-block" title="查看订单"><img src="images/icon_view.gif"/></a>
-    </td>
-   </tr>
-  </table>
-  <!-- BatchOperation -->
-  <div style="overflow:hidden;">
-      <!-- Operation -->
-	  <div class="BatchOperation fl">
-	   <input type="checkbox" id="del"/>
-	   <label for="del" class="btnStyle middle">Select All</label>
-	   <input type="button" value="Print Orders" class="btnStyle"/>
-	   <input type="button" value="Arrange Shipment" class="btnStyle"/>
-	   <input type="button" value="Delete Order" class="btnStyle"/>
-	  </div>
-	  <!-- turn page -->
-	  <div class="turnPage center fr">
-	   <a>Previous Page</a>
-	   <a>1</a>
-	   <a>Next Page</a>
-	  </div>
-  </div>
- </div>
 </body>
+<script src="http://cdn1.lncld.net/static/js/3.6.0/av-min.js"></script>
+<script src="js/template-web.js"></script>
+<script id="tr_tmp" type="text/html">
+  {{each}}
+  <tr>
+      <td>
+        <a href="M_order_detail.html?orderId={{$value.id}}">{{$value.id}}</a>
+      </td>
+      <td>{{$value.get("customer").get("nickName")}}</td>
+      <td>{{$value.createdAt}}</td>
+      <td>
+        <address>{{$value.get("address")}}</address>
+      </td>
+      <td>{{$value.get("totalPrice")}}</td>
+      <td>{{$value.get("state")}}</td>
+  </tr>
+  {{/each}}
+</script>
+
+<script>
+  AV.init({
+    appId: "yNEf7jl2uUskO9HlnSiKjAWU-gzGzoHsz",
+    appKey: "uYOq35PscfChdJ4Xv8EoqUQb"
+  });
+
+  function loadData() {
+    var search = $("#search").val().trim();
+    var stauts = $("#stauts_select").val();
+
+    if (search) {
+      var sql = "select *,include customer from Order where (objectId = '"+search+"' or customer in (select * from Customer where nickName regexp '(?i).*" + search + ".*'))"
+
+      if(stauts){
+        sql += " and state = '"+stauts+"'"
+      }
+      sql += " order by createdAt desc"
+      AV.Query.doCloudQuery(sql).then(function (datas) {
+        rendering(datas.results)
+    })
+    } else {
+      var query = new AV.Query('Order');
+      if (stauts) {
+        query.equalTo("state", stauts)
+      }
+
+      query.include("customer")
+      query.addDescending("createdAt")
+      query.find().then(function (datas) {
+        rendering(datas)
+      })
+    }
+
+
+
+  }
+  function rendering(datas) {
+    for (var i = 0; i < datas.length; i++) {
+      datas[i]["createdAt"] = new Date(datas[i].get("createdAt")).format("yyyy-MM-dd hh:mm")
+    }
+    var html = template("tr_tmp", datas)
+    $("#tbody").html(html);
+  }
+
+  loadData();
+
+
+  Date.prototype.format = function (fmt) { //author: meizz   
+    var o = {
+      "M+": this.getMonth() + 1,                 //月份   
+      "d+": this.getDate(),                    //日   
+      "h+": this.getHours(),                   //小时   
+      "m+": this.getMinutes(),                 //分   
+      "s+": this.getSeconds(),                 //秒   
+      "q+": Math.floor((this.getMonth() + 3) / 3), //季度   
+      "S": this.getMilliseconds()             //毫秒   
+    };
+    if (/(y+)/.test(fmt))
+      fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+      if (new RegExp("(" + k + ")").test(fmt))
+        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+  }
+</script>
+
 </html>

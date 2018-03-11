@@ -70,7 +70,7 @@ function settlement() {
     order.set("contactName", contactName)
     order.set("contactPhone", contactPhone)
     order.set("payment",payment)
-    order.set("state","WAIT_DELIVERY")
+    order.set("state","Paied")
     order.save().then(function(){
         window.location.href = "paymentresult.html"
     })
