@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>会员列表</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../黑白宽屏的电商后台模板/style/adminStyle.css" rel="stylesheet" type="text/css" />
+<script src="../黑白宽屏的电商后台模板/js/jquery.js"></script>
+<script src="../黑白宽屏的电商后台模板/js/public.js"></script>
+</head>
+<body>
+ <div class="wrap">
+  <div class="page-title">
+    <span class="modular fl"><i class="user"></i><em>Membership Management</em></span>
+  </div>
+  <div class="operate">
+   <form>
+<input type="text" class="textBox length-long" placeholder="Input Email or NickName..."/>
+    <input type="button" value="Look Up" class="tdBtn"/>
+   </form>
+  </div>
+  <table class="list-style Interlaced">
+   <tr>
+     <th>ObjectId</th>
+     <th>NickName</th>
+     <th>Email</th>
+     <th>Verified</th>
+     <th>Registrasion Date</th>
+     <th>Operation</th>
+   </tr>
+   <tr>
+    <td>
+     <input type="checkbox"/>
+     <span class="middle">5aa21af544d9040044fccccb</span>
+    </td>
+    <td class="center">1234</td>
+    <td class="center">DeathGhost@sina.cn</td>
+    <td class="center"><img src="../黑白宽屏的电商后台模板/images/yes.gif"/></td>
+    <td class="center">2018-03-09 13:26:13</td>
+    <td class="center">
+     <a href="../黑白宽屏的电商后台模板/edit_user.html" class="inline-block" title="编辑"><img src="../黑白宽屏的电商后台模板/images/icon_edit.gif"/></a>
+     <a href="../黑白宽屏的电商后台模板/account.html" class="inline-block" title="资金管理"><img src="../黑白宽屏的电商后台模板/images/icon_account.gif"/></a>
+     <a class="inline-block" title="删除"><img src="../黑白宽屏的电商后台模板/images/icon_drop.gif"/></a>
+    </td>
+   </tr>
+   
+   <tr>
+    <td>
+     <input type="checkbox"/>
+     <span class="middle">135a9e22d817d0090035b399e8</span>
+    </td>
+    <td class="center">123</td>
+    <td class="center">DeathGhost@sina.cn</td>
+<td class="center"><img src="../黑白宽屏的电商后台模板/images/no.gif"/></td>
+    <td class="center">2018-03-06 13:10:48</td>
+    <td class="center">
+     <a href="../黑白宽屏的电商后台模板/edit_user.html" class="inline-block" title="编辑"><img src="../黑白宽屏的电商后台模板/images/icon_edit.gif"/></a>
+     <a href="../黑白宽屏的电商后台模板/account.html" class="inline-block" title="资金管理"><img src="../黑白宽屏的电商后台模板/images/icon_account.gif"/></a>
+     <a class="inline-block" title="删除"><img src="../黑白宽屏的电商后台模板/images/icon_drop.gif"/></a>
+    </td>
+   </tr>
+  </table>
+  <!-- BatchOperation -->
+  <div style="overflow:hidden;">
+      <!-- Operation -->
+	  <div class="BatchOperation fl">
+	   <input type="checkbox" id="del"/>
+	   <label for="del" class="btnStyle middle">Select All</label>
+	   <input type="button" value="Delete" class="btnStyle"/>
+	  </div>
+	  <!-- turn page -->
+	  <div class="turnPage center fr">
+	   <a>Privious Page</a>
+	   <a>1</a>
+	   <a>Next Page</a>
+	  </div>
+  </div>
+ </div>
+</body>
+</html>

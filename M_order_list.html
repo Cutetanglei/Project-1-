@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>订单列表</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="style/adminStyle.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery.js"></script>
+<script src="js/public.js"></script>
+</head>
+<body>
+ <div class="wrap">
+  <div class="page-title">
+    <span class="modular fl"><i class="order"></i><em>Order List</em></span>
+  </div>
+  <div class="operate">
+   <form>
+    <img src="images/icon_search.gif"/>
+    <input type="text" class="textBox length-long" placeholder="Please input order number or customer name..."/>
+    <select class="inline-select">
+     <option>Unpaided</option>
+     <option>Paied</option>
+		<option>Confirmed</option>
+    </select>
+    <input type="button" value="Look Up" class="tdBtn"/>
+   </form>
+  </div>
+  <table class="list-style Interlaced">
+   <tr>
+    <th>Order Number</th>
+    <th>Ordering Time</th>
+    <th>Customer Name</th>
+	<th>Deliverying Address</th>
+    <th style="width:100px">Order Amount（$）</th>
+    <th style="width:100px">Order Status</th>
+    <th style="width:100px">Delivery Status</th>
+	<th style="width:100px">Check Details</th>
+   </tr>
+   <tr>
+    <td>
+     <input type="checkbox"/>
+     <a href="order_detail.html">2015041803225</a>
+    </td>
+    <td class="center">
+     <span class="block">DeatGhost</span>
+     <span class="block">2015-04-18 12:00</span>
+    </td>
+    <td width="450">
+     <span class="block">Sophiahahahahappy!?</span></td>
+    <td class="center">
+		<address>Fanling Center</address>
+    </td>
+    <td class="center">
+     <span>9888</span>
+    </td>
+	       <td class="center">
+     <span>Paied</span>
+    </td>
+	       <td class="center">
+     <span>Wait to be delivered</span>
+    </td>
+    <td class="center">
+     <a href="order_detail.html" class="inline-block" title="查看订单"><img src="images/icon_view.gif"/></a>
+    </td>
+   </tr>
+  </table>
+  <!-- BatchOperation -->
+  <div style="overflow:hidden;">
+      <!-- Operation -->
+	  <div class="BatchOperation fl">
+	   <input type="checkbox" id="del"/>
+	   <label for="del" class="btnStyle middle">Select All</label>
+	   <input type="button" value="Print Orders" class="btnStyle"/>
+	   <input type="button" value="Arrange Shipment" class="btnStyle"/>
+	   <input type="button" value="Delete Order" class="btnStyle"/>
+	  </div>
+	  <!-- turn page -->
+	  <div class="turnPage center fr">
+	   <a>Previous Page</a>
+	   <a>1</a>
+	   <a>Next Page</a>
+	  </div>
+  </div>
+ </div>
+</body>
+</html>

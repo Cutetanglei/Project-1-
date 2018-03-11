@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        input[name='images']{
+            display: block;
+        }
+    </style>
+</head>
+   <table>
+       <tr>
+           <td>Product Name</td>
+           <td><input id="title" type="text"/></td>
+       </tr>
+       <tr>
+            <td>Category</td>
+            <td><input id="categoryName" type="text"/></td>
+        </tr>
+       <tr>
+           <td>Descrption</td>
+           <td><textarea id="desc" cols="30" rows="10"></textarea></td>
+       </tr>
+       <tr>
+           <td>Picture</td>
+           <td id="images-td">
+               <input type="text" name="images"/>
+            </td>
+           <td><button id="add-image-input">+</button></td>
+       </tr>
+   </table>
+   <hr>
+   <table id="SKU-table">
+        <tr>
+            <td>Colour</td>
+            <td>ROM</td>
+            <td>Original Price</td>
+            <td>Discount Price</td>
+            <td>Inventory</td>
+            <td rowspan="999"><button id="add-SKU-input">+</button></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="colors"></td>
+            <td><input type="text" name="roms"></td>
+            <td><input type="text" name="o-price"></td>
+            <td><input type="text" name="d-price"></td>
+            <td><input type="text" name="inventory"></td>
+        </tr>
+   </table>
+   <br>
+   <button id="submit">Submit</button>
+   <button id="reload">Reset</button>
+   <br>
+   <div id="msg"></div>
+
+<body>
+
+</body>
+<script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="http://cdn1.lncld.net/static/js/3.6.0/av-min.js"></script>
+<script>
+    AV.init({
+        appId: "yNEf7jl2uUskO9HlnSiKjAWU-gzGzoHsz",
+        appKey: "uYOq35PscfChdJ4Xv8EoqUQb"
+    });
+    function getVal(_,input){
+        return $(input).val()
+    }
+    $(function(){
+        $("#submit").on("click",function(){
+             var title = $("#title").val()
+             var description = $("#title").val()
+             var categoryName = $("#categoryName").val();
+             var images = $("[name='images']").map(
+                function(_,input){
+                    var val = $(input).val()
+                    if(val != null && val != ""){
+                        return val
+                    }
+                }
+             ).toArray();
+             var colors = $("[name='colors']").map(getVal).toArray();
+             var roms = $("[name='roms']").map(getVal).toArray();
+             var originalPrice = $("[name='o-price']").map(getVal).toArray();
+             var discountPrice = $("[name='d-price']").map(getVal).toArray();
+             var inventory = $("[name='inventory']").map(getVal).toArray();
+
+             var Product = new AV.Object('Product');
+             Product.set('title', title);
+             Product.set('description', description);
+             Product.set('categoryName', categoryName);
+             Product.set('images', images);
+             Product.save().then(function(p){
+                $("#msg").append("Add Product Successfully！<br>")
+                for(var i = 0;i<colors.length;i++){
+                    var pro = AV.Object.createWithoutData('Product', p.id)
+                    var Product_SKU = new AV.Object('Product_SKU');
+                    Product_SKU.set("color",colors[i])
+                    Product_SKU.set("rom",roms[i])
+                    Product_SKU.set("inventory",parseInt(inventory[i]))
+                    Product_SKU.set("originalPrice",parseInt(originalPrice[i]))
+                    Product_SKU.set("discountPrice",parseInt(discountPrice[i]))
+                    Product_SKU.set("product",pro)
+                    Product_SKU.save().then(function(){
+                        $("#msg").append("Add Product_SKU Successfully！<br>")
+                    }).catch(function(error) {
+                        $("#msg").append("Product_SKU 插入失败！<br>")
+                    })
+                }
+             })
+             
+        })
+
+
+
+        // ----- 
+        $("#add-image-input").on("click",function(){
+            $("#images-td").append($("<input type='text' name='images'/>"))
+        })
+        $("#add-SKU-input").on("click",function(){
+            $("#SKU-table").append($('<tr><td><input type="text" name="colors"></td><td><input type="text" name="roms"></td><td><input type="text" name="o-price"></td><td><input type="text" name="d-price"></td><td><input type="text" name="inventory"></td></tr>'))
+        })
+        $("#reload").on("click",function(){
+            window.location.reload()
+        })
+    })
+</script>
+
+</html>
