@@ -106,42 +106,17 @@ $(function(){
         e.preventDefault();
         var email = $("#login_email").val()
         var pwd = $("#login_pwd").val()
-        var userType = $("#user-type").val();
-
-        if(userType == "user"){
-            var q_email = new AV.Query('Customer');
-            q_email.equalTo("email",email)
-    
-            var q_pwd = new AV.Query('Customer');
-            q_pwd.equalTo("password",pwd)
-    
-            var query = AV.Query.and(q_email,q_pwd)
-            query.find().then((res)=>{
-                if(res.length > 0){
-                    login(res[0].id,res[0].attributes.nickName)
-                }else{
-                    alert("Incorrect Username or Password");
-                    return
-                }
-            })
-        }else{
-            var admin_query = new AV.Query('Admin');
-            admin_query.equalTo("email",email)
-            admin_query.equalTo("password",pwd)
-            admin_query.first().then((res)=>{
-                if(res){
-                    sessionStorage.setItem("Admin_ID",res.id)
-                    sessionStorage.setItem("Admin_Name",res.get("nickName"))
-                    window.location.href = "M_index.html"
-                }else{
-                    alert("Incorrect Username or Password");
-                    return
-                }
-            })
-        }
-
-
-        
+        var query = new AV.Query('Customer');
+        query.equalTo("email",email)
+        query.equalTo("password",pwd)
+        query.find().then((res)=>{
+            if(res.length > 0){
+                login(res[0].id,res[0].attributes.nickName)
+            }else{
+                alert("Incorrect Username or Password");
+                return
+            }
+        })
     })
     function checkLogin(){
         if(sessionStorage.getItem("Customer_Name")){

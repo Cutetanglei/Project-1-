@@ -1,48 +1,78 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<title>后台管理系统</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="robots" content="nofollow"/>
-<link href="css/adminStyle.css" rel="stylesheet" type="text/css" />
-<style>
-body{width:100%;height:100%;overflow:hidden;background:url(images/pc_loginBg.jpg) no-repeat;background-size:cover;position:absolute;}
-</style>
-<script src="js/jquery.js"></script>
-<script src="js/Particleground.js"></script>
-<script>
-$(document).ready(function() {
-  $('body').particleground({
-    dotColor:'green',
-    lineColor:'#c9ec6e'
-  });
-  $('.intro').css({
-    'margin-top': -($('.intro').height() /2)
-  });
-  $(".loginform input[type='button']").click(function(){
-	  alert("Login In Successfully！Connecting to the management system");
-	  location.href="M_index.html";
-	  });
-});
-</script>
+  <title>后台管理系统</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="robots" content="nofollow" />
+  <link href="css/adminStyle.css" rel="stylesheet" type="text/css" />
+  <style>
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: url(images/pc_loginBg.jpg) no-repeat;
+      background-size: cover;
+      position: absolute;
+    }
+  </style>
+  <script src="js/jquery.js"></script>
+  <script src="js/Particleground.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('body').particleground({
+        dotColor: 'green',
+        lineColor: '#c9ec6e'
+      });
+      $('.intro').css({
+        'margin-top': -($('.intro').height() / 2)
+      });
+    });
+  </script>
 
 </head>
+
 <body>
   <section class="loginform">
-   <h1>Management System</h1>
-   <ul>
-    <li>
-     <label style="width:80px">Account:</label>
-     <input type="text" class="textBox" placeholder="Manager Account"/>
-    </li>
-    <li>
-     <label style="width:85px">Password：</label>
-     <input type="password" class="textBox" placeholder="Login in Password"/>
-    </li>
-    <li>
-     <input type="button" value="Login In"/>
-    </li>
-   </ul>
+    <h1>Management System</h1>
+    <ul>
+      <li>
+        <label style="width:80px">Account:</label>
+        <input type="text" id="loginName" class="textBox" placeholder="Manager Account" />
+      </li>
+      <li>
+        <label style="width:85px">Password：</label>
+        <input type="password" id="password" class="textBox" placeholder="Login in Password" />
+      </li>
+      <li>
+        <input type="button" onclick="login()" value="Login In" />
+      </li>
+    </ul>
   </section>
 </body>
+<script src="http://cdn1.lncld.net/static/js/3.6.0/av-min.js"></script>
+<script src="js/logic/index.js"></script>
+<script>
+  AV.init({
+    appId: "yNEf7jl2uUskO9HlnSiKjAWU-gzGzoHsz",
+    appKey: "uYOq35PscfChdJ4Xv8EoqUQb"
+  });
+
+  function login() {
+    var admin_query = new AV.Query('Admin');
+    admin_query.equalTo("loginName", $("#loginName").val())
+    admin_query.equalTo("password", $("#password").val())
+    admin_query.first().then((res) => {
+      if (res) {
+        sessionStorage.setItem("Admin_ID", res.id)
+        sessionStorage.setItem("Admin_Name", res.get("nickName"))
+        window.location.href = "M_index.html"
+      } else {
+        alert("Incorrect Username or Password");
+        return
+      }
+    })
+  }
+</script>
+
 </html>
