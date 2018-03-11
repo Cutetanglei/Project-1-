@@ -1,79 +1,121 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<title>会员列表</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="css/adminStyle.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery.js"></script>
-<script src="js/public.js"></script>
+  <title>会员列表</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link href="css/adminStyle.css" rel="stylesheet" type="text/css" />
+  <script src="js/jquery.js"></script>
+  <script src="js/public.js"></script>
 </head>
+
 <body>
- <div class="wrap">
-  <div class="page-title">
-    <span class="modular fl"><i class="user"></i><em>Membership Management</em></span>
+  <div class="wrap">
+    <div class="page-title">
+      <span class="modular fl">
+        <i class="user"></i>
+        <em>Membership Management</em>
+      </span>
+    </div>
+    <div class="operate">
+        <input type="text" id="search" class="textBox length-long" placeholder="Input Email or NickName..." />
+        <input type="button" onclick="loadData()" value="Look Up" class="tdBtn" />
+    </div>
+    <table class="list-style Interlaced">
+      <tr>
+        <th>ObjectId</th>
+        <th>NickName</th>
+        <th>Email</th>
+        <th>Registrasion Date</th>
+        <th>Operation</th>
+      </tr>
+      <tbody id="tbody">
+
+      </tbody>
+    </table>
   </div>
-  <div class="operate">
-   <form>
-<input type="text" class="textBox length-long" placeholder="Input Email or NickName..."/>
-    <input type="button" value="Look Up" class="tdBtn"/>
-   </form>
-  </div>
-  <table class="list-style Interlaced">
-   <tr>
-     <th>ObjectId</th>
-     <th>NickName</th>
-     <th>Email</th>
-     <th>Verified</th>
-     <th>Registrasion Date</th>
-     <th>Operation</th>
-   </tr>
-   <tr>
-    <td>
-     <input type="checkbox"/>
-     <span class="middle">5aa21af544d9040044fccccb</span>
-    </td>
-    <td class="center">1234</td>
-    <td class="center">DeathGhost@sina.cn</td>
-    <td class="center"><img src="images/yes.gif"/></td>
-    <td class="center">2018-03-09 13:26:13</td>
-    <td class="center">
-     <a href="edit_user.html" class="inline-block" title="编辑"><img src="images/icon_edit.gif"/></a>
-     <a href="account.html" class="inline-block" title="资金管理"><img src="images/icon_account.gif"/></a>
-     <a class="inline-block" title="删除"><img src="images/icon_drop.gif"/></a>
-    </td>
-   </tr>
-   
-   <tr>
-    <td>
-     <input type="checkbox"/>
-     <span class="middle">135a9e22d817d0090035b399e8</span>
-    </td>
-    <td class="center">123</td>
-    <td class="center">DeathGhost@sina.cn</td>
-<td class="center"><img src="images/no.gif"/></td>
-    <td class="center">2018-03-06 13:10:48</td>
-    <td class="center">
-     <a href="edit_user.html" class="inline-block" title="编辑"><img src="images/icon_edit.gif"/></a>
-     <a href="account.html" class="inline-block" title="资金管理"><img src="images/icon_account.gif"/></a>
-     <a class="inline-block" title="删除"><img src="images/icon_drop.gif"/></a>
-    </td>
-   </tr>
-  </table>
-  <!-- BatchOperation -->
-  <div style="overflow:hidden;">
-      <!-- Operation -->
-	  <div class="BatchOperation fl">
-	   <input type="checkbox" id="del"/>
-	   <label for="del" class="btnStyle middle">Select All</label>
-	   <input type="button" value="Delete" class="btnStyle"/>
-	  </div>
-	  <!-- turn page -->
-	  <div class="turnPage center fr">
-	   <a>Privious Page</a>
-	   <a>1</a>
-	   <a>Next Page</a>
-	  </div>
-  </div>
- </div>
 </body>
+<script src="http://cdn1.lncld.net/static/js/3.6.0/av-min.js"></script>
+<script src="js/template-web.js"></script>
+<script id="tr_tmp" type="text/html">
+  {{each}}
+  <tr>
+    <td>
+      <span class="middle">{{$value.id}}</span>
+    </td>
+    <td class="center">{{$value.get('nickName')}}</td>
+    <td class="center">{{$value.get('email')}}</td>
+    <td class="center">{{$value.createdAt}}</td>
+    <td class="center">
+      <a onclick="delect('{{$value.id}}')" class="inline-block" title="删除">
+        <img src="images/icon_drop.gif" />
+      </a>
+    </td>
+  </tr>
+  {{/each}}
+</script>
+<script>
+  AV.init({
+    appId: "yNEf7jl2uUskO9HlnSiKjAWU-gzGzoHsz",
+    appKey: "uYOq35PscfChdJ4Xv8EoqUQb"
+  });
+
+  Date.prototype.format =  function(fmt) { //author: meizz   
+    var o = {
+      "M+": this.getMonth() + 1,                 //月份   
+      "d+": this.getDate(),                    //日   
+      "h+": this.getHours(),                   //小时   
+      "m+": this.getMinutes(),                 //分   
+      "s+": this.getSeconds(),                 //秒   
+      "q+": Math.floor((this.getMonth() + 3) / 3), //季度   
+      "S": this.getMilliseconds()             //毫秒   
+    };
+    if (/(y+)/.test(fmt))
+      fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+      if (new RegExp("(" + k + ")").test(fmt))
+        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+  }
+
+  function loadData() {
+    var search = $("#search").val().trim();
+    if(search){
+      var regExp = new RegExp(search,'i');
+
+      var c_query1 = new AV.Query("Customer");
+      c_query1.matches("email",regExp)
+      var c_query2 = new AV.Query("Customer");
+      c_query2.matches("nickName",regExp)
+
+      var query = AV.Query.or(c_query1, c_query2);
+      query.find().then(function(datas){
+        rendering(datas)
+      })
+    }else{
+      var c_query = new AV.Query("Customer");
+      c_query.find().then(function (datas) {
+        rendering(datas)
+      })
+    }
+  }
+  function rendering(datas){
+    for(var i = 0;i<datas.length;i++){
+        datas[i]["createdAt"] = new Date(datas[i].get("createdAt")).format("yyyy-MM-dd hh:mm")
+      }
+      var html = template("tr_tmp", datas)
+      $("#tbody").html(html);
+  }
+
+  function delect(id) {
+    if (confirm("Confirm deletion?")) {
+      var obj = AV.Object.createWithoutData('Customer', id);
+      obj.destroy().then(function () {
+        loadData();
+      });
+    }
+  }
+  loadData();
+</script>
+
 </html>
