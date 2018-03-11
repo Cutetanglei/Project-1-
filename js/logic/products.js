@@ -57,6 +57,11 @@ function selectColor(dom) {
     loadData();
 }
 
+function logout() {
+    sessionStorage.removeItem("Customer_ID")
+    sessionStorage.removeItem("Customer_Name")
+    window.location.href = "index.html"
+}
 
 
 function addToCart(dom) {
