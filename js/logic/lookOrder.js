@@ -29,7 +29,7 @@ function logout() {
 }
 
 function GetRequest() {
-    var url = location.search; //获取url中"?"符后的字串  
+    var url = location.search; //获取url中"?"符后的字串
     var theRequest = new Object();
     if (url.indexOf("?") != -1) {
         var str = url.substr(1);
@@ -48,21 +48,21 @@ function settlement() {
     var contactPhone = $("#contactPhone").val().trim()
     var payment = $("[name='payment']:checked").val()
 
-    
+
     if (!region) {
-        alert("请选择地区.")
+        alert("Please choose the region.")
         return
     }
     if (!add_desc) {
-        alert("请填写地址.")
+        alert("Please fill the address.")
         return
     }
     if (!contactName) {
-        alert("请填写联系人.")
+        alert("Please fill the contactName.")
         return
     }
     if (!contactPhone) {
-        alert("请填写电话.")
+        alert("Please fill the contactPhone.")
         return
     }
 
