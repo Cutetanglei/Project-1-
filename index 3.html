@@ -13,6 +13,16 @@
 	<link href="css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- //Custom Theme files -->
+	<link rel="stylesheet" type="text/css" href="css/jiazaitoubu.css">
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<script src="u_js/jquery-1.8.3.min.js"></script>
+	<script src="js/index2.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/center.css">
+	<!--城市联动-->
+	<link rel="stylesheet" type="text/css" href="city/city.css">
+	<script src="city/Popt.js"></script>
+	<script src="city/cityJson.js"></script>
+	<script src="city/citySet.js"></script>
 	<!-- font-awesome icons -->
 	<link href="css/font-awesome.css" rel="stylesheet">
 	<!-- //font-awesome icons -->
@@ -86,37 +96,11 @@
 						<ul class="nav navbar-nav">
 							<li><a href="index.html" class="act">Home</a></li>
 							<!-- Mega Menu -->
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
-								<ul class="dropdown-menu multi-column columns-3">
-									<div class="row">
-										<div class="col-sm-3">
-											<ul class="multi-column-dropdown">
-												<h6>Mobiles</h6>
-												<li><a href="products.html">Mobile Phones</a></li>
-												<li><a href="products.html">Mp3 Players <span>New</span></a></li>
-												<li><a href="products.html">Popular Models</a></li>
-												<li><a href="products.html">All Tablets<span>New</span></a></li>
-											</ul>
-										</div>
-										<div class="col-sm-3">
-											<ul class="multi-column-dropdown">
-												<h6>Accessories</h6>
-												<li><a href="products1.html">Laptop</a></li>
-												<li><a href="products1.html">Desktop</a></li>
-												<li><a href="products1.html">Wearables <span>New</span></a></li>
-												<li><a href="products1.html"><i>Summer Store</i></a></li>
-											</ul>
-										</div>
-										<div class="col-sm-4">
-											<div class="w3ls_products_pos">
-												<h4>30%<i>Off/-</i></h4>
-												<img src="images/1.jpg" alt=" " class="img-responsive" />
-											</div>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</ul>
+							<li>
+							<a href="products.html">Products</a>
+							</li>
+							<li>
+								<a href="index 3.html">G Center</a>
 							</li>
 							<li><a href="about.html">About Us</a></li>
 							<li><a href="mail.html">Mail Us</a></li>
@@ -131,24 +115,8 @@
 <!--[if IE]>
     <!--[if IE 7]><link rel="stylesheet" type="text/css" href="css/ie7.css">
 <![endif]-->
-<link rel="stylesheet" type="text/css" href="css/jiazaitoubu.css">
-<link rel="stylesheet" type="text/css" href="css/css.css">
-<script src="u_js/jquery-1.8.3.min.js"></script>
-<script src="js/index2.js"></script>
-<link rel="stylesheet" type="text/css" href="css/center.css">
-<!--城市联动-->
-<link rel="stylesheet" type="text/css" href="city/city.css">
-<script src="city/Popt.js"></script>
-<script src="city/cityJson.js"></script>
-<script src="city/citySet.js"></script>
-</head>
-<body>
-<!--top-->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>G36 Telephone (^_^)</title>
+<!--top-->
 
 <script>
 window.onload=function(){
@@ -316,7 +284,7 @@ window.onload=function(){
         </div>
     <!--一条开始-->
     	<div class="public_m1">
-        	<div class="public_m2">Order Status</div>
+        	<div class="public_m2">Order Details</div>
             <!--各种进度-->
             <div class="gezhong_jdm">
             	<img src="images/jkkll.png"/>
@@ -330,11 +298,12 @@ window.onload=function(){
             <!--各种信息-->
             <div class="gezhong_xxm">
             	<ul>
-
-              <li><em>OrderID：</em><a href="#">111523538</a></li>
-              <li><em>Ordertime：</em><i>2018-03-10 20:12</i></li>
-                <li><em>Shipment：</em><i>sf-express</i></li>
-              <li><em>Delitime：</em><i>2018-03-11 00:12</i></li>
+<li><em>UserName:</em><i>Cute1111</i></li>
+<li><em>ContactNo:</em><i>1234556</i></li>
+              <li><em>&nbsp&nbsp OrderId：</em><a href="#">111523538</a></li>
+              <li><em>OrderTime:</em><i>2018-03-10 20:12</i></li>
+              <li><em>Shipment:</em><i>sf-express</i></li>
+              <li><em>OrderStatus:</em><i>&nbsp unpaid</i></li>
                 </ul>
             </div>
             <!--一个订单信息-->
@@ -342,11 +311,11 @@ window.onload=function(){
             	<table border="0" cellspacing="0" cellpadding="0">
                 	<tbody>
 						<tr style=" border-bottom:1px solid #000">
-                        	<th class="olist1">Item</th>
-                            <th class="olist2">Price(HKD)</th>
-                            <th class="olist3">Color</th>
+                        	<th class="olist1">ProductName</th>
+                            <th class="olist2">Colour</th>
+                            <th class="olist3">Storage</th>
                             <th class="olist4">Amount</th>
-                            <th class="olist5">Total</th>
+                            <th class="olist5">Subtotal</th>
                         </tr>
 						<tr>
 						  	<td><a href="#">GPhone 6S 128G</a></td>
@@ -366,8 +335,8 @@ window.onload=function(){
 
             </div>
             <!--合计金额-->
-            <div class="heji_jem">
-            	Total：<font>4600 HKD&nbsp&nbsp&nbsp&nbsp&nbsp</font>
+            <div class="heji_jem" style="position:relative;right:30px">
+            	In Total：<i class="fa fa-dollar"></i><font>4600 &nbsp&nbsp&nbsp&nbsp&nbsp</font>
             </div>
 
 
