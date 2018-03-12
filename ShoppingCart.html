@@ -303,7 +303,7 @@
 						<img src="{{$value.pro.get('images')[0]}}" alt="">
 					</div>
 					<div class="cart_item_overview">
-						<span class="title block">{{$value.pro.get('title')}}</span>
+						<span class="title block"><a href="single.html?id={{$value.pro.id}}&skuid={{$value.sku.id}}">{{$value.pro.get('title')}}</a></span>
 						<span class="block">Color：  {{$value.sku.get('color')}}</span>
 						{{if $value.sku.get('rom')}}
 							<span class="block">ROM：   {{$value.sku.get('rom')}}GB</span>
