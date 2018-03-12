@@ -94,6 +94,9 @@
 							<a href="products.html">Products</a>
 						</li>
 						<li>
+							<a href="userCenter.html">G Center</a>
+						</li>
+						<li>
 							<a href="about.html">About Us</a>
 						</li>
 						<li>
@@ -167,7 +170,7 @@
 				<span class="seperate_line">|</span>
 				<a class="clear_cart_all" href="javascript:void(0)" onclick="clearSelected()">Clear Selected items</a>
 				<div style="float:right">
-					<span id="total_amount" class="total_amount"> 0 </span> 
+					<span id="total_amount" class="total_amount"> 0 </span>
 					&nbsp;items &nbsp;&nbsp; Total &nbsp;
 					<span id="total_price" class="total_price">$0</span>
 					<a id="go_to_order" class="btn" onclick="checkOut()" href="javascript:void(0)">CheckOut</a>
@@ -290,9 +293,9 @@
 		<script src="js/template-web.js"></script>
 		<script id="cart_item_temp" type="text/html">
 			{{each}}
-			<tr cartItemId="{{$value.cart.id}}" 
-				discountPrice="{{$value.sku.get('discountPrice')}}" 
-				originalPrice="{{$value.sku.get('originalPrice')}}" 
+			<tr cartItemId="{{$value.cart.id}}"
+				discountPrice="{{$value.sku.get('discountPrice')}}"
+				originalPrice="{{$value.sku.get('originalPrice')}}"
 				quantity="{{$value.cart.get('quantity')}}"
 				subtotal="{{$value.sku.get('discountPrice') * $value.cart.get('quantity')}}"
 				class="act"
@@ -325,7 +328,7 @@
 				</td>
 				<td class="cart_item_subtotal">
 					<span name="subtotal" class="block">${{$value.sku.get('discountPrice') * $value.cart.get('quantity')}}</span>
-					
+
 				</td>
 				<td>
 					<a href="javascript:void(0)" onclick="deleteCartItem(this,'{{$value.cart.id}}','{{$value.pro.get('title')+$value.sku.get('color')}}')">Delete</a>
